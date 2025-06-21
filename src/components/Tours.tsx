@@ -4,7 +4,6 @@ import { ChevronRight, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
-import Btn from "./Btn";
 
 interface Tours {
   title: string;

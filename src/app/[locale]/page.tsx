@@ -3,7 +3,7 @@ import { AboutUs, Gallery, Head, TopTitle, Tours } from "@/components";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-const page = () => {
+const HomePage = () => {
   const tour = useTranslations("tour");
   const servic = useTranslations("servic");
   const gallery = useTranslations("gallery");
@@ -34,4 +34,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default HomePage;

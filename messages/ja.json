@@ -1,0 +1,95 @@
+{
+  "navbar": {
+    "logo": "サマルカンドへ",
+    "navLinks": [
+      { "path": "", "label": "ホーム" },
+      { "path": "about", "label": "私たちについて" },
+      { "path": "tours", "label": "ツアー" },
+      { "path": "gallery", "label": "ギャラリー" },
+      { "path": "services", "label": "サービス" },
+      { "path": "events", "label": "イベント" },
+      { "path": "contacts", "label": "お問い合わせ" }
+    ]
+  },
+  "head": {
+    "title": "サマルカンドへようこそ",
+    "description": "このサイトを通じて私たちのサービスを利用できます"
+  },
+  "about": {
+    "title": "サマルカンドの魅力を一緒に体験しましょう",
+    "description": "GoToSamarkandへようこそ。ここは、歴史と文化が息づく古都サマルカンドへの入り口です。当サイトでは、建築美や地元市場など、あなたの興味に合わせた多彩なガイドツアーをご用意しています。中央アジアの中心であるこの街を、厳選されたフォトギャラリーや名所の詳細、文化イベントや祭りの最新情報を通じてご紹介します。個人旅行、カップル、グループなど、どのスタイルでも簡単に旅の計画と予約ができます。経験豊富なガイドが、サマルカンドの隠れた魅力と歴史を丁寧にご案内します。レギスタン広場やシャーヒ・ズィンダ、伝統工芸など、見どころ満載です。イベントカレンダーやバーチャルギャラリーで、街の魅力を常に感じていただけます。GoToSamarkandとともに、忘れられない旅を始めましょう。"
+  },
+  "servic": {
+    "title": "サービス",
+    "description": "ガイド付きツアー、送迎、写真撮影、予約サポート、文化体験などをお客様の希望に応じてご提供します。"
+  },
+  "gallery": {
+    "title": "ギャラリー",
+    "description": "ガイド付きツアー、送迎、写真撮影、予約サポート、文化体験などをお客様の希望に応じてご提供します。"
+  },
+  "tour": {
+    "title": "人気のツアー",
+    "description": "忘れられない旅、歴史と文化、美しい景色が満載。",
+    "descriptionAll": "サマルカンドへの旅に出かけましょう。ここは歴史と現代が調和する都市です。ツアーでは、壮大なレギスタン広場、神聖なシャーヒ・ジンダ群、ビビ・ハヌム廟、ウルグベク天文台などを訪れます。イスラム建築の美しさ、シルクロードの遺産、そしてウズベクの温かいおもてなしを体験できます。ガイド付きツアー、送迎、写真撮影、料理教室などをご用意。サマルカンドの文化と歴史、味覚を一度に楽しめる忘れられない旅になるでしょう。",
+    "tours": [
+      {
+        "id": 1,
+        "title": "レギスタン",
+        "description": "レギスタンは歴史的な神学校と建築の驚異に満ちた有名な広場です",
+        "image": "registan",
+        "grade": 4,
+        "price": 100
+      },
+      {
+        "id": 2,
+        "title": "ウルグベク天文台",
+        "description": "ウルグベク天文台は天文学研究のための古代の科学施設です。",
+        "image": "ulugbek",
+        "grade": 4,
+        "price": 100
+      },
+      {
+        "id": 3,
+        "title": "シャーヒ・ジンダ",
+        "description": "シャーヒ・ジンダは霊的かつ建築美に富んだ霊廟群です。",
+        "image": "shaxizinda",
+        "grade": 4,
+        "price": 100
+      },
+      {
+        "id": 4,
+        "title": "ビビ・ハヌム廟",
+        "description": "ビビ・ハヌム廟はその美しさで称賛される歴史的な建造物です。",
+        "image": "reg2",
+        "grade": 4,
+        "price": 100
+      }
+    ]
+  },
+  "footer": {
+    "title": "サマルカンドへようこそ",
+    "copiright": "© 2024 GoToSamarkand. 全著作権所有",
+    "description": "このサイトを通じて私たちのサービスをご利用いただけます。",
+    "label": "SNSで私たちをフォローしてください",
+    "btnTitle": "送信",
+    "placeholder": "メッセージを送ってください！",
+    "contacts": [
+      {
+        "path": "https://www.instagram.com/gotosamarkand/",
+        "icon": "Instagram"
+      },
+      {
+        "path": "https://www.facebook.com/gotosamarkand/",
+        "icon": "Facebook"
+      },
+      {
+        "path": "https://www.youtube.com/@gotosamarkand",
+        "icon": "Youtube"
+      },
+      {
+        "path": "https://t.me/gotosamarkand",
+        "icon": "Send"
+      }
+    ]
+  }
+}

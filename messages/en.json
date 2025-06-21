@@ -1,0 +1,86 @@
+{
+  "navbar": {
+    "logo": "Go To Samarkand",
+    "navLinks": [
+      { "path": "", "label": "Home" },
+      { "path": "about", "label": "About Us" },
+      { "path": "tours", "label": "Tours" },
+      { "path": "gallery", "label": "Gallery" },
+      { "path": "services", "label": "Services" },
+      { "path": "events", "label": "Events" },
+      { "path": "contacts", "label": "Contacts" }
+    ]
+  },
+  "head": {
+    "title": "Welcome to Samarkand",
+    "description": "You can use our services through this site."
+  },
+  "about": {
+    "title": "Discover Samarkand with Us",
+    "description": "Welcome to GoToSamarkand – your gateway to the ancient city of Samarkand, where history and culture come alive. Our platform offers a wide range of guided tours tailored to your interests, from architectural marvels to vibrant local markets. Explore the heart of Central Asia through curated photo galleries, detailed descriptions, and real-time updates about upcoming cultural events and festivals. Our user-friendly services make it easy to plan and book your visit, whether you’re traveling solo, as a couple, or with a group. Each tour is led by experienced guides who share fascinating stories and hidden gems of the city. Discover the Registan, the Shah-i-Zinda necropolis, and traditional Uzbek craftsmanship. Through our event calendar and virtual galleries, you’ll stay connected to the spirit of Samarkand. With GoToSamarkand, every trip becomes a journey into the soul of one of the oldest cities on earth."
+  },
+  "servic": {
+    "title": "Services",
+    "description": "We offer guided tours, transfers, photography, booking assistance, and cultural workshops tailored to your preferences."
+  },
+  "gallery": {
+    "title": "Gallery",
+    "description": "We offer guided tours, transfers, photography, booking assistance, and cultural workshops tailored to your preferences."
+  },
+  "tour": {
+    "title": "Popular Tours",
+    "description": "Unforgettable journeys filled with history, culture, and stunning sights.",
+    "descriptionAll": "Embark on a journey to Samarkand — a city where history and modern life blend seamlessly. Our tours include visits to the majestic Registan, the sacred Shohi Zinda complex, the Bibi Khanum Mausoleum, and Ulugh Beg’s ancient observatory. Experience the beauty of Islamic architecture, the legacy of the Silk Road, and the warmth of Uzbek hospitality. We offer guided excursions, transfers, photo sessions, and culinary workshops. Discover the culture, history, and flavors of Samarkand in a single unforgettable adventure that will stay with you forever.",
+    "tours": [
+      {
+        "id": 1,
+        "title": "Registan",
+        "description": "Registan is a famous square full of historic madrasahs and architectural wonders.",
+        "image": "registan",
+        "grade": 4,
+        "price": 100
+      },
+      {
+        "id": 2,
+        "title": "Ulugh Beg Observatory",
+        "description": "Ulugh Beg Observatory is an ancient scientific site for astronomical research.",
+        "image": "ulugbek",
+        "grade": 4,
+        "price": 100
+      },
+      {
+        "id": 3,
+        "title": "Shohi Zinda",
+        "description": "Shohi Zinda is a complex of mausoleums rich in spiritual and architectural beauty.",
+        "image": "shaxizinda",
+        "grade": 3,
+        "price": 100
+      },
+      {
+        "id": 4,
+        "title": "Bibi Khanum Mausoleum",
+        "description": "Bibi Khanum Mausoleum is a historical monument admired for its stunning beauty.",
+        "image": "reg2",
+        "grade": 4,
+        "price": 100
+      }
+    ]
+  },
+  "footer": {
+    "title": "Welcome to Samarkand",
+    "copiright": "© 2024 GoToSamarkand. All rights reserved",
+    "description": "You can use our services through this site.",
+    "label": "Follow us on social media",
+    "btnTitle": "Send",
+    "placeholder": "Send we Messeage!",
+    "contacts": [
+      {
+        "path": "https://www.instagram.com/gotosamarkand/",
+        "icon": "Instagram"
+      },
+      { "path": "https://www.facebook.com/gotosamarkand/", "icon": "Facebook" },
+      { "path": "https://www.youtube.com/@gotosamarkand", "icon": "Youtube" },
+      { "path": "https://t.me/gotosamarkand", "icon": "Send" }
+    ]
+  }
+}

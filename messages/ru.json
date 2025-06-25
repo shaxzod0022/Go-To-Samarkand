@@ -91,5 +91,25 @@
         "icon": "Send"
       }
     ]
+  },
+  "booktour": {
+    "title": "Оформление заказа",
+    "fullName": "Полное имя",
+    "email": "Электронная почта",
+    "phone": "Номер телефона",
+    "date": "Дата и время",
+    "adults": "Взрослые",
+    "children": "Дети",
+    "infants": "Младенцы",
+    "age": "Возраст",
+    "guest": "Всего гостей",
+    "price": "Общая цена",
+    "send": "Отправить",
+    "comment": "Kомментарий",
+    "peopleCategories": [
+      { "category": "adults", "label": "Взрослые", "age": "8 - 80" },
+      { "category": "children", "label": "Дети", "age": "3 - 7" },
+      { "category": "infants", "label": "Младенцы", "age": "0 - 2" }
+    ]
   }
 }

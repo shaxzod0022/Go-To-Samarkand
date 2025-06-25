@@ -5,3 +5,6 @@ export { default as AboutUs } from "./AboutUs";
 export { default as TopTitle } from "./TopTitle";
 export { default as Tours } from "./Tours";
 export { default as Gallery } from "./Gallery";
+export { default as BackMessage } from "./BackMessage";
+export { default as Btn } from "./Btn";
+export { default as BookTour } from "./BookTour";

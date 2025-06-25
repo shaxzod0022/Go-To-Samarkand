@@ -29,7 +29,6 @@ const HomePage = () => {
         title={servic("title")}
         description={servic("description")}
       />
-      <Tours />
     </>
   );
 };

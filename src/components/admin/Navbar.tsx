@@ -1,11 +1,9 @@
 "use client";
 import { styles } from "@/styles/styles";
-import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { useState } from "react";
-import LanguageSwitcher from "./LanguageSwitcher";
 import { PanelRightOpen } from "lucide-react";
-import { usePathname } from "next/navigation";
+import nav from "../../../messages/en.json";
 
 interface NavLink {
   path: string;
@@ -13,22 +11,24 @@ interface NavLink {
 }
 
 const Navbar = () => {
-  const t = useTranslations("navbar");
-  const navLinks = t.raw("navLinks") as NavLink[];
+  const navLinks = nav.navbar.navLinks as NavLink[];
   const [modal, setModal] = useState<boolean>(false);
-  const pathname = usePathname();
   return (
     <div
       className={`bg-white z-20 fixed top-0 mx-auto w-full max-w-[1800px] ${styles.flexBetween} ${styles.paddingCont} py-4 shadow-sm`}
     >
       <Link href="/" className={`${styles.flexStart} gap-3`}>
         <span className="bg-yellow-300 w-10 h-10 rounded-full"></span>
+        <h2 className="font-bold lg:text-4xl sm:text-2xl text-xl sm:block hidden">
+          {nav.navbar.logo}
+        </h2>
+      </Link>
+      <Link href="/admin" className={`${styles.flexStart} gap-3`}>
         <h2 className="font-bold lg:text-4xl sm:text-2xl text-xl">
-          {t("logo")}
+          Admin Panel
         </h2>
       </Link>
       <nav className={`${styles.flex} gap-3 relative`}>
-        <LanguageSwitcher />
         <button className="lg:hidden flex" onClick={() => setModal((i) => !i)}>
           <PanelRightOpen />
         </button>
@@ -37,11 +37,11 @@ const Navbar = () => {
             modal ? "right-0 top-16" : "top-0 -right-[100%]"
           }`}
         >
-          {navLinks.map((link) => (
+          {navLinks.slice(2, 6).map((link) => (
             <li key={link.path}>
               <Link
                 onClick={() => setModal(false)}
-                href={pathname.slice(3).length === 0 ? `#${link.path}` : "/"}
+                href={"/admin/" + link.path}
                 className={`text-lg font-semibold transition-colors duration-200 hover:text-yellow-300`}
               >
                 {link.label}

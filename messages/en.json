@@ -72,7 +72,7 @@
     "description": "You can use our services through this site.",
     "label": "Follow us on social media",
     "btnTitle": "Send",
-    "placeholder": "Send we Messeage!",
+    "placeholder": "Send a Messeage!",
     "contacts": [
       {
         "path": "https://www.instagram.com/gotosamarkand/",
@@ -81,6 +81,26 @@
       { "path": "https://www.facebook.com/gotosamarkand/", "icon": "Facebook" },
       { "path": "https://www.youtube.com/@gotosamarkand", "icon": "Youtube" },
       { "path": "https://t.me/gotosamarkand", "icon": "Send" }
+    ]
+  },
+  "booktour": {
+    "title": "Ordering",
+    "fullName": "Full name",
+    "email": "Email",
+    "phone": "Phone number",
+    "date": "Date and time",
+    "adults": "Adults",
+    "children": "Children",
+    "infants": "Infants",
+    "age": "Age",
+    "guest": "Total guests",
+    "price": "Total price",
+    "send": "Send",
+    "comment":"Comment",
+    "peopleCategories": [
+      { "category": "adults", "label": "Adults", "age": "8 - 80" },
+      { "category": "children", "label": "Children", "age": "3 - 7" },
+      { "category": "infants", "label": "Infants", "age": "0 - 2" }
     ]
   }
 }

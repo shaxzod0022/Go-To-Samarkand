@@ -91,5 +91,25 @@
         "icon": "Send"
       }
     ]
+  },
+  "booktour": {
+    "title": "予約手続き",
+    "fullName": "氏名",
+    "email": "メールアドレス",
+    "phone": "電話番号",
+    "date": "日時",
+    "adults": "大人",
+    "children": "子供",
+    "infants": "乳児",
+    "age": "年齢",
+    "guest": "合計人数",
+    "price": "合計金額",
+    "send": "送信",
+    "comment": "コメント",
+    "peopleCategories": [
+      { "category": "adults", "label": "大人", "age": "8 - 80" },
+      { "category": "children", "label": "子供", "age": "3 - 7" },
+      { "category": "infants", "label": "乳児", "age": "0 - 2" }
+    ]
   }
 }

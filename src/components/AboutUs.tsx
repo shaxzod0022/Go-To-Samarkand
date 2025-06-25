@@ -1,24 +1,44 @@
 "use client";
-import { reg2, registan, shaxizinda, ulugbek } from "@/assets";
 import { styles } from "@/styles/styles";
+import axios from "axios";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React, { useRef, useState, useEffect } from "react";
 
-const images = [registan, shaxizinda, ulugbek, reg2];
+interface ImageItem {
+  _id: string;
+  image: string;
+}
 
 const AboutUs = () => {
   const t = useTranslations("about");
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [images, setImages] = useState<ImageItem[]>([]);
+
+  // Rasm ma'lumotlarini backenddan olish
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8080/api/gallery/all-gallery"
+        );
+        setImages(res.data); // To‘g‘ri formatda saqlash
+      } catch (err) {
+        console.error("❌ Gallery fetch error:", err);
+      }
+    };
+    fetchGallery();
+  }, []);
 
   // Slider avtomatik aylansin
   useEffect(() => {
+    if (images.length === 0) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [images]);
 
   return (
     <div
@@ -36,17 +56,20 @@ const AboutUs = () => {
       {/* O'ng taraf - slider */}
       <div className="md:w-[47%] w-full relative overflow-hidden rounded-lg shadow-lg">
         <div
+          key={currentIndex}
           ref={sliderRef}
-          className="w-full h-64 sm:h-80 md:h-[350px] transition-all duration-500 ease-in-out"
+          className="w-full h-64 sm:h-80 md:h-[350px] transition-opacity duration-700 ease-in-out"
         >
-          <Image
-            src={images[currentIndex]}
-            alt={`slide-${currentIndex}`}
-            className="w-full h-full object-cover rounded-lg"
-            width={600}
-            height={400}
-            priority
-          />
+          {images.length > 0 && (
+            <Image
+              src={`http://localhost:8080/static/${images[currentIndex].image}`}
+              alt={`slide-${currentIndex}`}
+              className="w-full h-full object-cover rounded-lg animate-fade-in"
+              width={600}
+              height={400}
+              priority
+            />
+          )}
         </div>
 
         {/* Dots indicator */}

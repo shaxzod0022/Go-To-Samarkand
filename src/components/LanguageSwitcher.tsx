@@ -29,7 +29,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
       segments[0] = newLocale; // birinchi bo'lim bu til bo'ladi
       const newPath = "/" + segments.join("/");
 
-      router.push(newPath);
+      router.replace(newPath);
     },
     [pathname, router]
   );

@@ -156,9 +156,9 @@ const OrderTour = () => {
       </div>
 
       <div
-        className={`flex flex-wrap items-start gap-4 ${
+        className={`flex flex-wrap items-start gap-5 ${
           loading ? "justify-around" : "justify-between"
-        }`}
+        } ${tours.length < 4 && "justify-start"}`}
       >
         {loading
           ? [1, 2, 3, 4].map((_, i) => (

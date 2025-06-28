@@ -46,7 +46,7 @@ const Tours = () => {
       <div
         className={`${styles.flexBetween} ${
           loading && "!justify-around"
-        } flex-wrap gap-4`}
+        } flex-wrap gap-5 ${tours.length < 4 && "justify-start"}`}
       >
         {loading
           ? [1, 2, 3, 4].map((_, x) => (

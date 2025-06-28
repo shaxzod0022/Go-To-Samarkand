@@ -133,7 +133,7 @@ const Events = () => {
       <div
         className={`flex items-center flex-wrap ${
           loading ? "justify-around" : "justify-between"
-        } !items-start gap-4 flex-wrap`}
+        } ${events.length < 4 && "justify-start"} !items-start gap-5 flex-wrap`}
       >
         {loading
           ? [1, 2, 3, 4].map((_, i) => (

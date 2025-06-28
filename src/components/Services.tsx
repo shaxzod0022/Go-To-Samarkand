@@ -46,9 +46,9 @@ const Services = () => {
   return (
     <div className={`${styles.paddingCont} lg:py-10 sm:py-6 py-4`}>
       <div
-        className={`${styles.flexBetween} ${
-          loading && "!justify-around"
-        } flex-wrap gap-4`}
+        className={`${styles.flexBetween} ${loading && "!justify-around"} ${
+          services.length < 4 && "justify-start"
+        } flex-wrap gap-5`}
       >
         {loading
           ? [1, 2, 3, 4].map((_, x) => (

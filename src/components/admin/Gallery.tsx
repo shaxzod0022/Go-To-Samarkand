@@ -92,7 +92,10 @@ const Gallery = () => {
   }
 
   return (
-    <div id="gallery" className={`${styles.paddingCont} py-10 mt-12 scroll-mt-12`}>
+    <div
+      id="gallery"
+      className={`${styles.paddingCont} py-10 mt-12 scroll-mt-12`}
+    >
       <h2 className="mb-3 text-xl md:text-3xl xl:text-4xl font-bold">
         Gallery
       </h2>
@@ -130,7 +133,9 @@ const Gallery = () => {
       <div
         className={`flex items-center flex-wrap ${
           loading ? "justify-around" : "justify-between"
-        } !items-start gap-4 flex-wrap`}
+        } ${
+          galleryItems.length < 4 && "justify-start"
+        } !items-start gap-5 flex-wrap`}
       >
         {loading
           ? [1, 2, 3, 4].map((i, x) => (

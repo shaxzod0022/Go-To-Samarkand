@@ -7,3 +7,4 @@ export { default as Tours } from "./Tours";
 export { default as OrderTour } from "./OrderTour";
 export { default as OrderServic } from "./OrderServic";
 export { default as OrderEvent } from "./OrderEvent";
+export { default as Messages } from "./Messages";

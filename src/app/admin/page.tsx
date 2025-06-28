@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
-import { AdminInfo, NavbarAdmin } from "@/components/admin";
+import { AdminInfo, Messages, NavbarAdmin } from "@/components/admin";
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -42,8 +42,9 @@ export default function AdminDashboard() {
 
   return (
     <div className="text-center">
-       <NavbarAdmin />
+      <NavbarAdmin />
       <AdminInfo />
+      <Messages />
     </div>
   );
 }

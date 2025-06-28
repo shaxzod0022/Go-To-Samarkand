@@ -1,11 +1,13 @@
 "use client";
 import { styles } from "@/styles/styles";
 import { useTranslations } from "next-intl";
-import React from "react";
+import React, { useState } from "react";
 import { Instagram, Facebook, Send, Youtube } from "lucide-react";
 import Link from "next/link";
 import Btn from "./Btn";
 import { usePathname } from "next/navigation";
+import axios from "axios";
+import BackMessage from "./BackMessage";
 
 const iconMap: Record<string, React.ElementType> = {
   Instagram,
@@ -29,6 +31,39 @@ const Footer = () => {
   const contacts = t.raw("contacts") as FooterContacts[];
   const footerLinks = tNav.raw("navLinks") as FooterLinks[];
   const pathname = usePathname();
+  const [success, setSuccess] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [load, setLoad] = useState<boolean>(false);
+
+  const [message, setMessage] = useState<{
+    message: string;
+    email: string;
+  }>({ message: "", email: "" });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoad(true);
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/api/message/create-message",
+        message
+      );
+      setMessage({ message: "", email: "" });
+      setSuccess(res.data.message);
+      setTimeout(() => setSuccess(null), 4000);
+    } catch (err) {
+      let msg = "Message failed";
+      if (axios.isAxiosError(err)) {
+        msg = err.response?.data?.message || err.message;
+      } else if (err instanceof Error) {
+        msg = err.message;
+      }
+      setError(msg);
+      setTimeout(() => setError(null), 4000);
+    } finally {
+      setLoad(false);
+    }
+  };
 
   return (
     <div
@@ -72,17 +107,36 @@ const Footer = () => {
           </ul>
           <p>{t("label")}</p>
         </div>
-        <div
-          className={`${styles.flexCol} items-start gap-3 lg:w-[30%] w-full`}
+        <form
+          onSubmit={handleSubmit}
+          className={`${styles.flexCol} items-start gap-3 lg:w-[30%] w-full relative`}
         >
           <textarea
+            required
+            value={message.message ?? ""}
             placeholder={t("placeholder")}
+            onChange={(e) =>
+              setMessage({ ...message, message: e.target.value })
+            }
             className={`bg-white outline-none rounded-md text-black p-3 w-full`}
           />
-          <Btn title={t("btnTitle")} />
-        </div>
+          <input
+            type="email"
+            placeholder={t("email")}
+            required
+            value={message.email ?? ""}
+            onChange={(e) => setMessage({ ...message, email: e.target.value })}
+            className="bg-white outline-none rounded-md text-black p-3 w-full"
+          />
+          <Btn disabled={load} type="submit" title={t("btnTitle")} />
+        </form>
       </div>
       <p className="text-center">{t("copiright")}</p>
+      <BackMessage
+        successMessage={success}
+        errorMessage={error}
+        newClass="!top-20"
+      />
     </div>
   );
 };

@@ -76,6 +76,7 @@
     "description": "You can use our services through this site.",
     "label": "Follow us on social media",
     "btnTitle": "Send",
+    "email": "Email",
     "placeholder": "Send a Messeage!",
     "contacts": [
       {

@@ -27,6 +27,10 @@
     "title": "Gallery",
     "description": "We offer guided tours, transfers, photography, booking assistance, and cultural workshops tailored to your preferences."
   },
+  "event": {
+    "title": "Events",
+    "description": "Discover unforgettable events including cultural festivals, historical tours, music nights, and local exhibitions held across the city."
+  },
   "tour": {
     "title": "Popular Tours",
     "description": "Unforgettable journeys filled with history, culture, and stunning sights.",
@@ -87,7 +91,7 @@
     "title": "Ordering",
     "fullName": "Full name",
     "email": "Email",
-    "phone": "Phone number",
+    "phone": "Phone number: +123...",
     "date": "Date and time",
     "adults": "Adults",
     "children": "Children",
@@ -96,7 +100,7 @@
     "guest": "Total guests",
     "price": "Total price",
     "send": "Send",
-    "comment":"Comment",
+    "comment": "Comment",
     "peopleCategories": [
       { "category": "adults", "label": "Adults", "age": "8 - 80" },
       { "category": "children", "label": "Children", "age": "3 - 7" },

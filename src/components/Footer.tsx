@@ -5,6 +5,7 @@ import React from "react";
 import { Instagram, Facebook, Send, Youtube } from "lucide-react";
 import Link from "next/link";
 import Btn from "./Btn";
+import { usePathname } from "next/navigation";
 
 const iconMap: Record<string, React.ElementType> = {
   Instagram,
@@ -27,6 +28,7 @@ const Footer = () => {
   const tNav = useTranslations("navbar");
   const contacts = t.raw("contacts") as FooterContacts[];
   const footerLinks = tNav.raw("navLinks") as FooterLinks[];
+  const pathname = usePathname();
 
   return (
     <div
@@ -42,7 +44,7 @@ const Footer = () => {
           {footerLinks.map((link) => (
             <li key={link.path}>
               <Link
-                href={"#" + link.path}
+                href={pathname.slice(3).length === 0 ? `#${link.path}` : "/"}
                 className={`text-md transition-colors duration-200 hover:text-yellow-300`}
               >
                 {link.label}

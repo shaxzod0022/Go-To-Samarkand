@@ -14,7 +14,7 @@ interface LocalizedText {
   ja: string;
 }
 
-interface Tour {
+interface Servic {
   _id: string;
   title: LocalizedText;
   description: LocalizedText;
@@ -30,16 +30,15 @@ type PersonCategory = {
   age: string;
 };
 
-const BookTour = () => {
-  const { id: tourId } = useParams();
+const BookServic = () => {
+  const { id: servicId } = useParams();
   const lang = useLocale();
   const t = useTranslations("booktour");
-  const [tour, setTour] = useState<Tour | null>(null);
+  const [servic, setServic] = useState<Servic | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [load, setLoad] = useState<boolean>(false);
 
-  // get categories from translation JSON
   const rawPeople = t.raw("peopleCategories") as PersonCategory[];
 
   const [form, setForm] = useState({
@@ -54,25 +53,25 @@ const BookTour = () => {
   });
 
   const totalPrice =
-    form.adults * (tour?.price || 0) +
-    form.children * (tour?.childrenPrice || 0) +
-    form.infants * (tour?.infantsPrice || 0);
+    form.adults * (servic?.price || 0) +
+    form.children * (servic?.childrenPrice || 0) +
+    form.infants * (servic?.infantsPrice || 0);
 
-  const fetchTour = async () => {
-    if (!tourId) return;
+  const fetchServic = async () => {
+    if (!servicId) return;
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/tour/one-tour/${tourId}`
+        `http://localhost:8080/api/servic/one-servic/${servicId}`
       );
-      setTour(res.data);
+      setServic(res.data);
     } catch (err) {
-      console.error("Tour fetch error:", err);
+      console.error("Service fetch error:", err);
     }
   };
 
   useEffect(() => {
-    fetchTour();
-  }, [tourId]);
+    fetchServic();
+  }, [servicId]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -82,12 +81,11 @@ const BookTour = () => {
     // faqat phone uchun filtrlash
     if (name === "phone") {
       const filteredPhone = value
-        .replace(/[^0-9+]/g, "") // faqat + va raqamlar
-        .replace(/\+(?=.*\+)/g, ""); // faqat 1 dona + bo'lishiga ruxsat
+        .replace(/[^0-9+]/g, "")
+        .replace(/\+(?=.*\+)/g, "");
 
       setForm({ ...form, [name]: filteredPhone });
     } else {
-      // qolgan inputlar uchun hech qanday filter yo‘q
       setForm({ ...form, [name]: value });
     }
   };
@@ -106,9 +104,9 @@ const BookTour = () => {
     e.preventDefault();
     setLoad(true);
     try {
-      const data = { ...form, tourId, totalPrice };
+      const data = { ...form, servicId, totalPrice };
       const res = await axios.post(
-        "http://localhost:8080/api/tour-order/create-order",
+        "http://localhost:8080/api/servic-order/create-order",
         data
       );
       setForm({
@@ -138,12 +136,12 @@ const BookTour = () => {
   };
 
   const getPrice = (category: PersonCategory["category"]): number => {
-    const priceKey = `${category}Price` as keyof Tour;
-    const price = tour?.[priceKey];
-    return typeof price === "number" ? price : tour?.price || 0;
+    const priceKey = `${category}Price` as keyof Servic;
+    const price = servic?.[priceKey];
+    return typeof price === "number" ? price : servic?.price || 0;
   };
 
-  if (!tour) {
+  if (!servic) {
     return (
       <div className={`${styles.flexCenter} h-screen`}>
         <p className="circle_loader"></p>
@@ -155,23 +153,21 @@ const BookTour = () => {
     <div
       className={`${styles.flexBetween} !items-start ${styles.paddingCont} py-4 sm:py-6 lg:py-8 sm:mt-16 mt-20`}
     >
-      {/* Chap tomonda tour haqida */}
       <div className="lg:w-2/3 w-full">
         <img
-          src={`http://localhost:8080/static/${tour.image}`}
-          alt={tour.title[lang as keyof LocalizedText]}
+          src={`http://localhost:8080/static/${servic.image}`}
+          alt={servic.title[lang as keyof LocalizedText]}
           className="rounded-lg shadow-md w-full lg:h-96 object-cover mb-2"
         />
         <h2 className="text-2xl font-bold">
-          {tour.title[lang as keyof LocalizedText]}
+          {servic.title[lang as keyof LocalizedText]}
         </h2>
         <p className="text-gray-700 text-lg mb-4">
-          {tour.description[lang as keyof LocalizedText]}
+          {servic.description[lang as keyof LocalizedText]}
         </p>
-        <strong className="text-blue-600 text-xl">USD: ${tour.price}</strong>
+        <strong className="text-blue-600 text-xl">USD: ${servic.price}</strong>
       </div>
 
-      {/* O'ng tomonda forma */}
       <div className="lg:w-1/3 w-full bg-white lg:py-0 lg:px-5">
         <h3 className="text-2xl font-bold mb-4">{t("title")}</h3>
         <form onSubmit={handleSubmit} className={`${styles.flexCol} gap-4`}>
@@ -196,10 +192,10 @@ const BookTour = () => {
           <input
             type="tel"
             name="phone"
-            pattern="^\+?[0-9]*$"
             placeholder={t("phone")}
             value={form.phone}
             onChange={handleChange}
+            pattern="^\+?[0-9]*$"
             required
             className="w-full border p-4 rounded-lg border-blue-500 outline-blue-700"
           />
@@ -282,4 +278,4 @@ const BookTour = () => {
   );
 };
 
-export default BookTour;
+export default BookServic;

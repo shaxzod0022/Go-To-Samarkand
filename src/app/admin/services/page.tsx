@@ -1,5 +1,5 @@
 "use client";
-import { NavbarAdmin, Services } from "@/components/admin";
+import { NavbarAdmin, OrderServic, Services } from "@/components/admin";
 import { jwtDecode } from "jwt-decode";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -43,6 +43,7 @@ const ServicesPage = () => {
     <div className="text-center">
       <NavbarAdmin />
       <Services />
+      <OrderServic />
     </div>
   );
 };

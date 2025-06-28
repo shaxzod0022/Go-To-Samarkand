@@ -5,3 +5,5 @@ export { default as Gallery } from "./Gallery";
 export { default as Services } from "./Services";
 export { default as Tours } from "./Tours";
 export { default as OrderTour } from "./OrderTour";
+export { default as OrderServic } from "./OrderServic";
+export { default as OrderEvent } from "./OrderEvent";

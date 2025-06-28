@@ -13,7 +13,7 @@ interface LocalizedText {
   ja: string;
 }
 
-interface Tour {
+interface Service {
   title: LocalizedText;
   description: LocalizedText;
   price: number;
@@ -24,8 +24,8 @@ interface Tour {
   _id: string;
 }
 
-interface OrderTourProps {
-  tourId: Tour;
+interface OrderServiceProps {
+  servicId: Service;
   fullName: string;
   email: string;
   phone: string;
@@ -47,13 +47,13 @@ const langs = [
   { id: 3, lang: "ja", label: "🇯🇵 日本語" },
 ];
 
-const OrderTour = () => {
+const OrderService = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [tours, setTours] = useState<OrderTourProps[]>([]);
+  const [services, setServices] = useState<OrderServiceProps[]>([]);
   const [lang, setLang] = useState<string>("en");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const [loadingComment, setLoadingComment] = useState<string | null>(null); // loading faqat bir id uchun
+  const [loadingComment, setLoadingComment] = useState<string | null>(null);
   const [comments, setComments] = useState<Record<string, string>>({});
   const [modal, setModal] = useState<{
     del: boolean;
@@ -69,17 +69,16 @@ const OrderTour = () => {
       let res;
       if (action === "update") {
         res = await axios.put(
-          `http://localhost:8080/api/tour-order/update-order/${id}`,
+          `http://localhost:8080/api/servic-order/update-order/${id}`,
           { commentAdmin: comments[id] },
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else if (action === "delete") {
         res = await axios.delete(
-          `http://localhost:8080/api/tour-order/delete-order/${id}`,
+          `http://localhost:8080/api/servic-order/delete-order/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        // Tur o‘chirilgandan so‘ng localdan olib tashlaymiz
-        setTours((prev) => prev.filter((t) => t._id !== id));
+        setServices((prev) => prev.filter((t) => t._id !== id));
       }
 
       setSuccess(res?.data?.message || "Action successful");
@@ -98,13 +97,13 @@ const OrderTour = () => {
     }
   };
 
-  const fetchTours = async () => {
+  const fetchServices = async () => {
     setLoading(true);
     const stored = sessionStorage.getItem("adminData");
     const { token } = stored ? JSON.parse(stored) : {};
     try {
       const res = await axios.get(
-        "http://localhost:8080/api/tour-order/all-order",
+        "http://localhost:8080/api/servic-order/all-order",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -112,32 +111,30 @@ const OrderTour = () => {
           },
         }
       );
-      setTours(res.data);
-
-      // Yangi: comments ni to'ldirib qo'yish
+      setServices(res.data);
       const commentMap: Record<string, string> = {};
-      res.data.forEach((tour: OrderTourProps) => {
-        commentMap[tour._id] = tour.commentAdmin || "";
+      res.data.forEach((service: OrderServiceProps) => {
+        commentMap[service._id] = service.commentAdmin || "";
       });
       setComments(commentMap);
     } catch (err) {
-      console.error("❌ Xatolik:", err);
+      console.error("❌ Error:", err);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchTours();
+    fetchServices();
   }, []);
 
-  if (!tours || tours.length === 0)
+  if (!services || services.length === 0)
     return <div className="text-2xl font-bold h-40">Order Not Found</div>;
 
   return (
     <div className={`${styles.paddingCont} mt-12 py-10 scroll-mt-12`}>
       <h2 className="mb-3 text-xl md:text-3xl xl:text-4xl font-bold">
-        Ordered Tours
+        Ordered Services
       </h2>
       <div className={`${styles.flexCenter} gap-4 mb-4`}>
         {langs.map((item) => (
@@ -164,22 +161,22 @@ const OrderTour = () => {
           ? [1, 2, 3, 4].map((_, i) => (
               <p key={i} className="card_loader p-28"></p>
             ))
-          : tours.map((item) => (
+          : services.map((item) => (
               <div
                 key={item._id}
                 className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl bg-white"
               >
                 <img
-                  src={`http://localhost:8080/static/${item.tourId.image}`}
-                  alt="Tour Image"
+                  src={`http://localhost:8080/static/${item.servicId.image}`}
+                  alt="Service Image"
                   className="w-full h-52 object-cover rounded-t-xl"
                 />
                 <div className="p-3 text-left">
                   <h3 className="text-lg sm:text-xl xl:text-2xl font-bold my-2">
-                    {item.tourId.title[lang as keyof LocalizedText]}
+                    {item.servicId.title[lang as keyof LocalizedText]}
                   </h3>
                   <p className="text-sm sm:text-md xl:text-lg mb-2 text-gray-600">
-                    {item.tourId.description[lang as keyof LocalizedText]}
+                    {item.servicId.description[lang as keyof LocalizedText]}
                   </p>
                   <hr />
                   <ul>
@@ -196,7 +193,7 @@ const OrderTour = () => {
                       <span className="font-semibold">{item.phone}</span>
                     </li>
                     <li className="text-sm sm:text-md xl:text-lg my-2 bg-gray-100 p-1">
-                      <span className="font-extralight">Tour start time:</span>{" "}
+                      <span className="font-extralight">Start time:</span>{" "}
                       <span className="font-semibold">
                         {new Date(item.date).toLocaleTimeString("uz-UZ", {
                           timeZone: "Asia/Samarkand",
@@ -221,7 +218,7 @@ const OrderTour = () => {
                       <span className="font-semibold">{item.infants}</span>
                     </li>
                     <li className="text-sm sm:text-md xl:text-lg my-2 bg-gray-100 p-1">
-                      <span className="font-extralight">Guest comments:</span>{" "}
+                      <span className="font-extralight">Comment:</span>{" "}
                       <span
                         className={`${
                           !item.comment && "text-red-500"
@@ -267,7 +264,7 @@ const OrderTour = () => {
                 </div>
                 <div className={`${styles.flexBetween} text-sm p-3 relative`}>
                   <div>
-                    <strong>Edited date:</strong>{" "}
+                    <strong>Edited:</strong>{" "}
                     <span>
                       {new Date(item.updatedAt).toLocaleTimeString("uz-UZ", {
                         timeZone: "Asia/Samarkand",
@@ -280,7 +277,7 @@ const OrderTour = () => {
                     </span>
                   </div>
                   <div>
-                    <strong>Created date:</strong>{" "}
+                    <strong>Created:</strong>{" "}
                     <span>
                       {new Date(item.createdAt).toLocaleTimeString("uz-UZ", {
                         timeZone: "Asia/Samarkand",
@@ -333,4 +330,4 @@ const OrderTour = () => {
   );
 };
 
-export default OrderTour;
+export default OrderService;

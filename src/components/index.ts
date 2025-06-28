@@ -8,3 +8,7 @@ export { default as Gallery } from "./Gallery";
 export { default as BackMessage } from "./BackMessage";
 export { default as Btn } from "./Btn";
 export { default as BookTour } from "./BookTour";
+export { default as BookServic } from "./BookServic";
+export { default as BookEvent } from "./BookEvent";
+export { default as Services } from "./Services";
+export { default as Events } from "./Events";

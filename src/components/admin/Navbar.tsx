@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { PanelRightOpen } from "lucide-react";
 import nav from "../../../messages/en.json";
+import { usePathname } from "next/navigation";
 
 interface NavLink {
   path: string;
@@ -13,6 +14,8 @@ interface NavLink {
 const Navbar = () => {
   const navLinks = nav.navbar.navLinks as NavLink[];
   const [modal, setModal] = useState<boolean>(false);
+  const pathname = usePathname();
+  
   return (
     <div
       className={`bg-white z-20 fixed top-0 mx-auto w-full max-w-[1800px] ${styles.flexBetween} ${styles.paddingCont} py-4 shadow-sm`}
@@ -42,7 +45,9 @@ const Navbar = () => {
               <Link
                 onClick={() => setModal(false)}
                 href={"/admin/" + link.path}
-                className={`text-lg font-semibold transition-colors duration-200 hover:text-yellow-300`}
+                className={`${
+                  pathname.includes(link.path) && "text-yellow-300"
+                } text-lg font-semibold transition-colors duration-200 hover:text-yellow-300`}
               >
                 {link.label}
               </Link>

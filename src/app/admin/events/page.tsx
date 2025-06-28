@@ -1,5 +1,5 @@
 "use client";
-import { Events, NavbarAdmin } from "@/components/admin";
+import { Events, NavbarAdmin, OrderEvent } from "@/components/admin";
 import { jwtDecode } from "jwt-decode";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -41,8 +41,9 @@ const EventsPage = () => {
   if (loading) return null;
   return (
     <div className="text-center">
-       <NavbarAdmin />
+      <NavbarAdmin />
       <Events />
+      <OrderEvent />
     </div>
   );
 };

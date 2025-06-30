@@ -22,6 +22,8 @@ interface Event {
   childrenPrice: number;
   infantsPrice: number;
   image: string;
+  startDate: string;
+  endDate: string;
 }
 
 type PersonCategory = {
@@ -45,12 +47,27 @@ const BookEvent = () => {
     fullName: "",
     email: "",
     phone: "",
-    date: "",
     adults: 1,
     children: 0,
     infants: 0,
     comment: "",
   });
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("userData");
+    if (savedData) {
+      const parseData = JSON.parse(savedData);
+      setForm({
+        fullName: parseData.fullName || "",
+        email: parseData.email || "",
+        phone: parseData.phone || "",
+        adults: 1,
+        children: 0,
+        infants: 0,
+        comment: "",
+      });
+    }
+  }, []);
 
   const totalPrice =
     form.adults * (event?.price || 0) +
@@ -107,16 +124,14 @@ const BookEvent = () => {
         "http://localhost:8080/api/event-order/create-order",
         data
       );
-      setForm({
-        fullName: "",
-        email: "",
-        phone: "",
-        date: "",
-        adults: 1,
-        children: 0,
-        infants: 0,
-        comment: "",
-      });
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          fullName: form.fullName,
+          email: form.email,
+          phone: form.phone,
+        })
+      );
       setSuccess(res.data.message);
       setTimeout(() => setSuccess(null), 4000);
     } catch (err) {
@@ -163,6 +178,28 @@ const BookEvent = () => {
         <p className="text-gray-700 text-lg mb-4">
           {event.description[lang as keyof LocalizedText]}
         </p>
+        <p className="text-gray-700 text-lg mb-4">
+          <strong>Start date:</strong>{" "}
+          {new Date(event.startDate).toLocaleTimeString("uz-UZ", {
+            timeZone: "Asia/Samarkand",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </p>
+        <p className="text-gray-700 text-lg mb-4">
+          <strong>End date:</strong>{" "}
+          {new Date(event.endDate).toLocaleTimeString("uz-UZ", {
+            timeZone: "Asia/Samarkand",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </p>
         <strong className="text-blue-600 text-xl">USD: ${event.price}</strong>
       </div>
 
@@ -194,15 +231,6 @@ const BookEvent = () => {
             value={form.phone}
             onChange={handleChange}
             pattern="^\+?[0-9]*$"
-            required
-            className="w-full border p-4 rounded-lg border-blue-500 outline-blue-700"
-          />
-          <label htmlFor="date">{t("date")}</label>
-          <input
-            type="datetime-local"
-            name="date"
-            value={form.date}
-            onChange={handleChange}
             required
             className="w-full border p-4 rounded-lg border-blue-500 outline-blue-700"
           />

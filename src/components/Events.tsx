@@ -18,6 +18,8 @@ interface EventType {
   description: LocalizedText;
   image: string;
   price: number;
+  startDate: string;
+  endDate: string;
 }
 
 const Events = () => {
@@ -75,6 +77,28 @@ const Events = () => {
                   <p className="text-sm sm:text-md xl:text-lg mb-2 text-gray-600">
                     {item.description[lang as keyof LocalizedText].slice(0, 60)}
                     . . .
+                  </p>
+                  <p className="text-sm sm:text-md xl:text-lg mb-2">
+                    <strong>Start date:</strong>{" "}
+                    {new Date(item.startDate).toLocaleTimeString("uz-UZ", {
+                      timeZone: "Asia/Samarkand",
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </p>
+                  <p className="text-sm sm:text-md xl:text-lg mb-2">
+                    <strong>End date:</strong>{" "}
+                    {new Date(item.endDate).toLocaleTimeString("uz-UZ", {
+                      timeZone: "Asia/Samarkand",
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
                   </p>
                   <div className={`${styles.flexBetween}`}>
                     <strong className="text-green-600">

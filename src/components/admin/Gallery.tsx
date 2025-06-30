@@ -7,6 +7,7 @@ import Btn from "../Btn";
 import AddGallery from "./AddGallery";
 import UpdateGallery from "./UpdateGallery";
 import DeleteGallery from "./DeleteGallery";
+import { SquarePen, Trash2 } from "lucide-react";
 
 interface LocalizedText {
   en: string;
@@ -160,21 +161,23 @@ const Gallery = () => {
                       "No description"}
                   </p>
                 </div>
-                <div className={`${styles.flexAround} gap-3 p-3`}>
-                  <Btn
+                <div className={`${styles.flexStart} gap-3 p-3`}>
+                  <button
                     onClick={() =>
-                      setModal({ ...modal, del: true, id: item._id })
+                      setModal({ ...modal, del: !modal.del, id: item._id })
                     }
-                    title="Delete"
-                    newClass="!py-1 !px-5 bg-red-600 hover:bg-red-400 active:bg-red-600"
-                  />
-                  <Btn
+                    className="p-2 rounded-xl bg-red-600 hover:bg-red-400 active:bg-red-600 text-white"
+                  >
+                    <Trash2 />
+                  </button>
+                  <button
                     onClick={() =>
-                      setModal({ ...modal, upd: true, id: item._id })
+                      setModal({ ...modal, upd: !modal.upd, id: item._id })
                     }
-                    title="Update"
-                    newClass="!py-1 !px-5 bg-green-600 hover:bg-green-400 active:bg-green-600"
-                  />
+                    className="p-2 rounded-xl bg-green-600 hover:bg-green-400 active:bg-green-600 text-white"
+                  >
+                    <SquarePen />
+                  </button>
                 </div>
               </div>
             ))}

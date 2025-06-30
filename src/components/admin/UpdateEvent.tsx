@@ -15,6 +15,8 @@ interface Event {
   title: LocalizedText;
   description: LocalizedText;
   price: number;
+  startDate: string;
+  endDate: string;
   childrenPrice: number;
   infantsPrice: number;
   image: string;
@@ -84,6 +86,8 @@ const UpdateEvent: FC<UpdateProps> = ({ onCancel, modal, data, lang }) => {
     fd.append("price", formData.price.toString());
     fd.append("childrenPrice", formData.childrenPrice.toString());
     fd.append("infantsPrice", formData.infantsPrice.toString());
+    fd.append("startDate", formData.startDate);
+    fd.append("endDate", formData.endDate);
     if (imageFile) {
       fd.append("image", imageFile);
     } else {
@@ -170,6 +174,26 @@ const UpdateEvent: FC<UpdateProps> = ({ onCancel, modal, data, lang }) => {
           value={formData.infantsPrice ?? ""}
           onChange={(e) => handleChange(e, "infantsPrice")}
           className="w-full border px-3 py-1 rounded"
+        />
+      </div>
+
+      <div className="mb-3 space-x-2">
+        <label className="font-medium">Start and end date</label> <br />
+        <input
+          type="datetime-local"
+          name="startDate"
+          value={formData.startDate ?? ""}
+          onChange={(e) => handleChange(e, "startDate")}
+          required
+          className="w-[47%] border p-4 rounded-lg"
+        />
+        <input
+          type="datetime-local"
+          name="endDate"
+          value={formData.endDate ?? ""}
+          onChange={(e) => handleChange(e, "endDate")}
+          required
+          className="w-[47%] border p-4 rounded-lg"
         />
       </div>
 

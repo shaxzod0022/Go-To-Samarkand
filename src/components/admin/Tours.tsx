@@ -2,7 +2,7 @@
 
 import { styles } from "@/styles/styles";
 import axios from "axios";
-import { Star } from "lucide-react";
+import { SquarePen, Star, Trash2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Btn from "../Btn";
 import Update from "./Update";
@@ -149,21 +149,23 @@ const Tours = () => {
                     <span>For infants price:</span> USD {item.infantsPrice}$
                   </p>
                 </div>
-                <div className={`${styles.flexAround} gap-3 p-3`}>
-                  <Btn
+                <div className={`${styles.flexStart} gap-3 p-3`}>
+                  <button
                     onClick={() =>
                       setModal({ ...modal, del: !modal.del, id: item._id })
                     }
-                    title="Delete"
-                    newClass="!py-1 !px-5 bg-red-600 hover:bg-red-400 active:bg-red-600"
-                  />
-                  <Btn
+                    className="p-2 rounded-xl bg-red-600 hover:bg-red-400 active:bg-red-600 text-white"
+                  >
+                    <Trash2 />
+                  </button>
+                  <button
                     onClick={() =>
                       setModal({ ...modal, upd: !modal.upd, id: item._id })
                     }
-                    title="Update"
-                    newClass="!py-1 !px-5 bg-green-600 hover:bg-green-400 active:bg-green-600"
-                  />
+                    className="p-2 rounded-xl bg-green-600 hover:bg-green-400 active:bg-green-600 text-white"
+                  >
+                    <SquarePen />
+                  </button>
                 </div>
               </div>
             ))}

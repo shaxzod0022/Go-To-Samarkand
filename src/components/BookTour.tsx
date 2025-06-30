@@ -53,6 +53,23 @@ const BookTour = () => {
     comment: "",
   });
 
+  useEffect(() => {
+    const savedData = localStorage.getItem("userData");
+    if (savedData) {
+      const parseData = JSON.parse(savedData);
+      setForm({
+        fullName: parseData.fullName || "",
+        email: parseData.email || "",
+        phone: parseData.phone || "",
+        date: "",
+        adults: 1,
+        children: 0,
+        infants: 0,
+        comment: "",
+      });
+    }
+  }, []);
+
   const totalPrice =
     form.adults * (tour?.price || 0) +
     form.children * (tour?.childrenPrice || 0) +
@@ -111,16 +128,15 @@ const BookTour = () => {
         "http://localhost:8080/api/tour-order/create-order",
         data
       );
-      setForm({
-        fullName: "",
-        email: "",
-        phone: "",
-        date: "",
-        adults: 1,
-        children: 0,
-        infants: 0,
-        comment: "",
-      });
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          fullName: form.fullName,
+          email: form.email,
+          phone: form.phone,
+        })
+      );
+
       setSuccess(res.data.message);
       setTimeout(() => setSuccess(null), 4000);
     } catch (err) {

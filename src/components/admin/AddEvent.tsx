@@ -17,6 +17,8 @@ const AddEvent: React.FC<AddEventProps> = ({ modal, onCancel }) => {
     title: { ...initialLocalizedText },
     description: { ...initialLocalizedText },
     price: 0,
+    startDate: "",
+    endDate: "",
     childrenPrice: 0,
     infantsPrice: 0,
     image: null as File | null,
@@ -64,6 +66,8 @@ const AddEvent: React.FC<AddEventProps> = ({ modal, onCancel }) => {
       body.append("image", formData.image as Blob);
       body.append("title", JSON.stringify(formData.title));
       body.append("description", JSON.stringify(formData.description));
+      body.append("startDate", formData.startDate);
+      body.append("endDate", formData.endDate);
 
       const res = await axios.post(
         "http://localhost:8080/api/event/create-event",
@@ -83,6 +87,8 @@ const AddEvent: React.FC<AddEventProps> = ({ modal, onCancel }) => {
         price: 0,
         childrenPrice: 0,
         infantsPrice: 0,
+        startDate: "",
+        endDate: "",
         image: null,
       });
       setTimeout(() => {
@@ -167,6 +173,26 @@ const AddEvent: React.FC<AddEventProps> = ({ modal, onCancel }) => {
           value={formData.infantsPrice}
           onChange={(e) => handleChange(e, "infantsPrice")}
           className="w-full border px-3 py-1 rounded"
+        />
+      </div>
+
+      <div className="mb-3 space-x-2">
+        <label className="font-medium">Start and end date</label> <br />
+        <input
+          type="datetime-local"
+          name="startDate"
+          value={formData.startDate}
+          onChange={(e) => handleChange(e, "startDate")}
+          required
+          className="w-[47%] border p-4 rounded-lg"
+        />
+        <input
+          type="datetime-local"
+          name="endDate"
+          value={formData.endDate}
+          onChange={(e) => handleChange(e, "endDate")}
+          required
+          className="w-[47%] border p-4 rounded-lg"
         />
       </div>
 

@@ -21,7 +21,7 @@ const AboutUs = () => {
     const fetchGallery = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/gallery/all-gallery"
+          "https://gotosamarkand.onrender.com/api/gallery/all-gallery"
         );
         setImages(res.data); // To‘g‘ri formatda saqlash
       } catch (err) {
@@ -62,7 +62,7 @@ const AboutUs = () => {
         >
           {images.length > 0 && (
             <Image
-              src={`http://localhost:8080/static/${images[currentIndex].image}`}
+              src={`https://gotosamarkand.onrender.com/static/${images[currentIndex].image}`}
               alt={`slide-${currentIndex}`}
               className="w-full h-full object-cover rounded-lg animate-fade-in"
               width={600}

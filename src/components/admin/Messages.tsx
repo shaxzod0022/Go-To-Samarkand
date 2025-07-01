@@ -30,7 +30,7 @@ const Messages = () => {
       const { token } = stored ? JSON.parse(stored) : {};
 
       const res = await axios.get(
-        "http://localhost:8080/api/message/all-message",
+        "https://gotosamarkand.onrender.com/api/message/all-message",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@ const Messages = () => {
 
     try {
       const res = await axios.delete(
-        `http://localhost:8080/api/message/delete-message/${id}`,
+        `https://gotosamarkand.onrender.com/api/message/delete-message/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setMessages((prev) => prev.filter((t) => t._id !== id));

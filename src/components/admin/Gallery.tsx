@@ -50,7 +50,7 @@ const Gallery = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/gallery/all-gallery"
+          "https://gotosamarkand.onrender.com/api/gallery/all-gallery"
         );
         setGalleryItems(res.data);
       } catch (err) {
@@ -148,7 +148,7 @@ const Gallery = () => {
                 className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
               >
                 <img
-                  src={`http://localhost:8080/static/${item.image}`}
+                  src={`https://gotosamarkand.onrender.com/static/${item.image}`}
                   alt="Gallery Image"
                   className="w-full h-52 object-cover rounded-t-xl"
                 />

@@ -79,7 +79,7 @@ const BookTour = () => {
     if (!tourId) return;
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/tour/one-tour/${tourId}`
+        `https://gotosamarkand.onrender.com/api/tour/one-tour/${tourId}`
       );
       setTour(res.data);
     } catch (err) {
@@ -125,7 +125,7 @@ const BookTour = () => {
     try {
       const data = { ...form, tourId, totalPrice };
       const res = await axios.post(
-        "http://localhost:8080/api/tour-order/create-order",
+        "https://gotosamarkand.onrender.com/api/tour-order/create-order",
         data
       );
       localStorage.setItem(
@@ -174,7 +174,7 @@ const BookTour = () => {
       {/* Chap tomonda tour haqida */}
       <div className="lg:w-2/3 w-full">
         <img
-          src={`http://localhost:8080/static/${tour.image}`}
+          src={`https://gotosamarkand.onrender.com/static/${tour.image}`}
           alt={tour.title[lang as keyof LocalizedText]}
           className="rounded-lg shadow-md w-full lg:h-96 object-cover mb-2"
         />

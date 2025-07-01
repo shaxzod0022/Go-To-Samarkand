@@ -36,7 +36,7 @@ const Gallery = () => {
     const fetchGallery = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/gallery/all-gallery"
+          "https://gotosamarkand.onrender.com/api/gallery/all-gallery"
         );
         setGallery(res.data);
       } catch (err) {
@@ -84,7 +84,7 @@ const Gallery = () => {
               style={{ animationDelay: `${idx * 150}ms` }}
             >
               <img
-                src={`http://localhost:8080/static/${item.image}`}
+                src={`https://gotosamarkand.onrender.com/static/${item.image}`}
                 alt={item.title?.[lang] || "Gallery image"}
                 width={400}
                 height={200}

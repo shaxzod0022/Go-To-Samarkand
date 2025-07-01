@@ -78,7 +78,7 @@ const BookEvent = () => {
     if (!eventId) return;
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/event/one-event/${eventId}`
+        `https://gotosamarkand.onrender.com/api/event/one-event/${eventId}`
       );
       setEvent(res.data);
     } catch (err) {
@@ -121,7 +121,7 @@ const BookEvent = () => {
     try {
       const data = { ...form, eventId, totalPrice };
       const res = await axios.post(
-        "http://localhost:8080/api/event-order/create-order",
+        "https://gotosamarkand.onrender.com/api/event-order/create-order",
         data
       );
       localStorage.setItem(
@@ -168,7 +168,7 @@ const BookEvent = () => {
     >
       <div className="lg:w-2/3 w-full">
         <img
-          src={`http://localhost:8080/static/${event.image}`}
+          src={`https://gotosamarkand.onrender.com/static/${event.image}`}
           alt={event.title[lang as keyof LocalizedText]}
           className="rounded-lg shadow-md w-full lg:h-96 object-cover mb-2"
         />

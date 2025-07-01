@@ -69,13 +69,13 @@ const OrderTour = () => {
       let res;
       if (action === "update") {
         res = await axios.put(
-          `http://localhost:8080/api/tour-order/update-order/${id}`,
+          `https://gotosamarkand.onrender.com/api/tour-order/update-order/${id}`,
           { commentAdmin: comments[id] },
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else if (action === "delete") {
         res = await axios.delete(
-          `http://localhost:8080/api/tour-order/delete-order/${id}`,
+          `https://gotosamarkand.onrender.com/api/tour-order/delete-order/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         // Tur o‘chirilgandan so‘ng localdan olib tashlaymiz
@@ -104,7 +104,7 @@ const OrderTour = () => {
     const { token } = stored ? JSON.parse(stored) : {};
     try {
       const res = await axios.get(
-        "http://localhost:8080/api/tour-order/all-order",
+        "https://gotosamarkand.onrender.com/api/tour-order/all-order",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -170,7 +170,7 @@ const OrderTour = () => {
                 className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl bg-white"
               >
                 <img
-                  src={`http://localhost:8080/static/${item.tourId.image}`}
+                  src={`https://gotosamarkand.onrender.com/static/${item.tourId.image}`}
                   alt="Tour Image"
                   className="w-full h-52 object-cover rounded-t-xl"
                 />

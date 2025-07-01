@@ -92,7 +92,7 @@ const UpdateServic: FC<UpdateProps> = ({ onCancel, modal, data, lang }) => {
 
     try {
       const res = await axios.put(
-        `http://localhost:8080/api/servic/update-servic/${formData._id}`,
+        `https://gotosamarkand.onrender.com/api/servic/update-servic/${formData._id}`,
         fd,
         {
           headers: {
@@ -183,7 +183,7 @@ const UpdateServic: FC<UpdateProps> = ({ onCancel, modal, data, lang }) => {
         />
       ) : (
         <img
-          src={`http://localhost:8080/static/${formData.image}`}
+          src={`https://gotosamarkand.onrender.com/static/${formData.image}`}
           alt="Old"
           className="w-full h-40 object-cover rounded mb-3"
         />

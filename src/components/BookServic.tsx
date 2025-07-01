@@ -78,7 +78,7 @@ const BookServic = () => {
     if (!servicId) return;
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/servic/one-servic/${servicId}`
+        `https://gotosamarkand.onrender.com/api/servic/one-servic/${servicId}`
       );
       setServic(res.data);
     } catch (err) {
@@ -123,7 +123,7 @@ const BookServic = () => {
     try {
       const data = { ...form, servicId, totalPrice };
       const res = await axios.post(
-        "http://localhost:8080/api/servic-order/create-order",
+        "https://gotosamarkand.onrender.com/api/servic-order/create-order",
         data
       );
       localStorage.setItem(
@@ -170,7 +170,7 @@ const BookServic = () => {
     >
       <div className="lg:w-2/3 w-full">
         <img
-          src={`http://localhost:8080/static/${servic.image}`}
+          src={`https://gotosamarkand.onrender.com/static/${servic.image}`}
           alt={servic.title[lang as keyof LocalizedText]}
           className="rounded-lg shadow-md w-full lg:h-96 object-cover mb-2"
         />

@@ -53,7 +53,7 @@ const Services = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/servic/all-servic"
+          "https://gotosamarkand.onrender.com/api/servic/all-servic"
         );
         setServices(res.data);
       } catch (err) {
@@ -149,7 +149,7 @@ const Services = () => {
                 className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
               >
                 <img
-                  src={`http://localhost:8080/static/${item.image}`}
+                  src={`https://gotosamarkand.onrender.com/static/${item.image}`}
                   alt="Service Image"
                   className="w-full h-52 object-cover rounded-t-xl"
                 />

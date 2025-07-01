@@ -69,13 +69,13 @@ const OrderService = () => {
       let res;
       if (action === "update") {
         res = await axios.put(
-          `http://localhost:8080/api/servic-order/update-order/${id}`,
+          `https://gotosamarkand.onrender.com/api/servic-order/update-order/${id}`,
           { commentAdmin: comments[id] },
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else if (action === "delete") {
         res = await axios.delete(
-          `http://localhost:8080/api/servic-order/delete-order/${id}`,
+          `https://gotosamarkand.onrender.com/api/servic-order/delete-order/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setServices((prev) => prev.filter((t) => t._id !== id));
@@ -103,7 +103,7 @@ const OrderService = () => {
     const { token } = stored ? JSON.parse(stored) : {};
     try {
       const res = await axios.get(
-        "http://localhost:8080/api/servic-order/all-order",
+        "https://gotosamarkand.onrender.com/api/servic-order/all-order",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -167,7 +167,7 @@ const OrderService = () => {
                 className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl bg-white"
               >
                 <img
-                  src={`http://localhost:8080/static/${item.servicId.image}`}
+                  src={`https://gotosamarkand.onrender.com/static/${item.servicId.image}`}
                   alt="Service Image"
                   className="w-full h-52 object-cover rounded-t-xl"
                 />

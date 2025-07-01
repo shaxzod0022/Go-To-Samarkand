@@ -38,7 +38,7 @@ const DeleteGallery: FC<DeleteProps> = ({ onCancel, modal, data, lang }) => {
 
     try {
       const res = await axios.delete(
-        `http://localhost:8080/api/gallery/delete-gallery/${data?._id}`,
+        `https://gotosamarkand.onrender.com/api/gallery/delete-gallery/${data?._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

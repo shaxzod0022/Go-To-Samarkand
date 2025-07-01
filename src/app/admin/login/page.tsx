@@ -19,7 +19,7 @@ export default function AdminLogin() {
     setLoad(true);
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/admin/login-admin",
+        "https://gotosamarkand.onrender.com/api/admin/login-admin",
         value
       );
 

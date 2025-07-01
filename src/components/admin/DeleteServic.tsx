@@ -38,7 +38,7 @@ const DeleteServic: FC<DeleteProps> = ({ onCancel, modal, data, lang }) => {
     const { token } = stored ? JSON.parse(stored) : {};
     try {
       const res = await axios.delete(
-        `http://localhost:8080/api/servic/delete-servic/${data?._id}`,
+        `https://gotosamarkand.onrender.com/api/servic/delete-servic/${data?._id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setSuccess(res.data.message);

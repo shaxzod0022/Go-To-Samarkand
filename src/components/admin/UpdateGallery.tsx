@@ -91,7 +91,7 @@ const UpdateGallery: FC<UpdateGalleryProps> = ({
 
     try {
       const res = await axios.put(
-        `http://localhost:8080/api/gallery/update-gallery/${formData._id}`,
+        `https://gotosamarkand.onrender.com/api/gallery/update-gallery/${formData._id}`,
         fd,
         {
           headers: {
@@ -152,7 +152,7 @@ const UpdateGallery: FC<UpdateGalleryProps> = ({
         />
       ) : (
         <img
-          src={`http://localhost:8080/static/${formData.image}`}
+          src={`https://gotosamarkand.onrender.com/static/${formData.image}`}
           alt="Old"
           className="w-full h-40 object-cover rounded mb-3"
         />

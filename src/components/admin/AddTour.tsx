@@ -66,7 +66,7 @@ const AddTour: React.FC<AddTourProps> = ({ modal, onCancel }) => {
       body.append("description", JSON.stringify(formData.description));
 
       const res = await axios.post(
-        "http://localhost:8080/api/tour/create-tour",
+        "https://gotosamarkand.onrender.com/api/tour/create-tour",
         body,
         {
           headers: {

@@ -45,7 +45,7 @@ const Footer = () => {
     setLoad(true);
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/message/create-message",
+        "https://gotosamarkand.onrender.com/api/message/create-message",
         message
       );
       setMessage({ message: "", email: "" });

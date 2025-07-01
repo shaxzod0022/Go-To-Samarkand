@@ -70,7 +70,7 @@ const AddEvent: React.FC<AddEventProps> = ({ modal, onCancel }) => {
       body.append("endDate", formData.endDate);
 
       const res = await axios.post(
-        "http://localhost:8080/api/event/create-event",
+        "https://gotosamarkand.onrender.com/api/event/create-event",
         body,
         {
           headers: {

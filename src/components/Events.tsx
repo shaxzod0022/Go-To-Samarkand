@@ -32,7 +32,7 @@ const Events = () => {
     const fetchEvents = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/event/all-event"
+          "https://gotosamarkand.onrender.com/api/event/all-event"
         );
         setEvents(res.data);
       } catch (err) {
@@ -63,7 +63,7 @@ const Events = () => {
                 className="w-full cursor-pointer hover:scale-105 active:scale-100 lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
               >
                 <img
-                  src={`http://localhost:8080/static/${item.image}`}
+                  src={`https://gotosamarkand.onrender.com/static/${item.image}`}
                   alt="Event Image"
                   className="w-full h-52 object-cover rounded-t-xl"
                 />

@@ -60,7 +60,7 @@ const AddGallery: React.FC<AddGalleryProps> = ({ modal, onCancel }) => {
       body.append("description", JSON.stringify(formData.description));
 
       const res = await axios.post(
-        "http://localhost:8080/api/gallery/gallery-create",
+        "https://gotosamarkand.onrender.com/api/gallery/gallery-create",
         body,
         {
           headers: {

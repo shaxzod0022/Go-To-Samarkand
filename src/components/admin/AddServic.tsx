@@ -66,7 +66,7 @@ const AddServic: React.FC<AddServicProps> = ({ modal, onCancel }) => {
       body.append("description", JSON.stringify(formData.description));
 
       const res = await axios.post(
-        "http://localhost:8080/api/servic/create-servic",
+        "https://gotosamarkand.onrender.com/api/servic/create-servic",
         body,
         {
           headers: {

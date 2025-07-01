@@ -65,7 +65,7 @@ const AdminInfo = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:8080/api/admin/update-admin/${_id}`,
+        `https://gotosamarkand.onrender.com/api/admin/update-admin/${_id}`,
         formData,
         {
           headers: {
@@ -103,7 +103,7 @@ const AdminInfo = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:8080/api/admin/update-password/${_id}`,
+        `https://gotosamarkand.onrender.com/api/admin/update-password/${_id}`,
         passwordData,
         {
           headers: {

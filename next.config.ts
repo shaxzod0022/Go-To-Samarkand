@@ -6,9 +6,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "8080",
+        protocol: "https",
+        hostname: "gotosamarkand.onrender.com",
+        port: "",
         pathname: "/static/**",
       },
     ],

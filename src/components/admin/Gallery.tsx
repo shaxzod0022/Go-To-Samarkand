@@ -132,55 +132,57 @@ const Gallery = () => {
       />
 
       <div
-        className={`flex items-center flex-wrap ${
-          loading ? "justify-around" : "justify-between"
-        } ${
+        className={`${styles.flexBetween} ${
           galleryItems.length < 4 && "justify-start"
         } !items-start gap-5 flex-wrap`}
       >
-        {loading
-          ? [1, 2, 3, 4].map((i, x) => (
+        {loading ? (
+          <div className={`${styles.flexAround} w-full`}>
+            {[1, 2, 3, 4].map((i, x) => (
               <p key={x} className="card_loader p-28"></p>
-            ))
-          : galleryItems.map((item) => (
-              <div
-                key={item._id}
-                className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
-              >
-                <img
-                  src={`https://gotosamarkand.onrender.com/static/${item.image}`}
-                  alt="Gallery Image"
-                  className="w-full h-52 object-cover rounded-t-xl"
-                />
-                <div className="p-3 text-left">
-                  <h3 className="text-lg sm:text-xl xl:text-2xl font-bold my-2">
-                    {item.title?.[lang as keyof LocalizedText] || "No title"}
-                  </h3>
-                  <p className="text-sm sm:text-md xl:text-lg mb-2 text-gray-600">
-                    {item.description?.[lang as keyof LocalizedText] ||
-                      "No description"}
-                  </p>
-                </div>
-                <div className={`${styles.flexStart} gap-3 p-3`}>
-                  <button
-                    onClick={() =>
-                      setModal({ ...modal, del: !modal.del, id: item._id })
-                    }
-                    className="p-2 rounded-xl bg-red-600 hover:bg-red-400 active:bg-red-600 text-white"
-                  >
-                    <Trash2 />
-                  </button>
-                  <button
-                    onClick={() =>
-                      setModal({ ...modal, upd: !modal.upd, id: item._id })
-                    }
-                    className="p-2 rounded-xl bg-green-600 hover:bg-green-400 active:bg-green-600 text-white"
-                  >
-                    <SquarePen />
-                  </button>
-                </div>
-              </div>
             ))}
+          </div>
+        ) : (
+          galleryItems.map((item) => (
+            <div
+              key={item._id}
+              className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
+            >
+              <img
+                src={`https://gotosamarkand.onrender.com/static/${item.image}`}
+                alt="Gallery Image"
+                className="w-full h-52 object-cover rounded-t-xl"
+              />
+              <div className="p-3 text-left">
+                <h3 className="text-lg sm:text-xl xl:text-2xl font-bold my-2">
+                  {item.title?.[lang as keyof LocalizedText] || "No title"}
+                </h3>
+                <p className="text-sm sm:text-md xl:text-lg mb-2 text-gray-600">
+                  {item.description?.[lang as keyof LocalizedText] ||
+                    "No description"}
+                </p>
+              </div>
+              <div className={`${styles.flexStart} gap-3 p-3`}>
+                <button
+                  onClick={() =>
+                    setModal({ ...modal, del: !modal.del, id: item._id })
+                  }
+                  className="p-2 rounded-xl bg-red-600 hover:bg-red-400 active:bg-red-600 text-white"
+                >
+                  <Trash2 />
+                </button>
+                <button
+                  onClick={() =>
+                    setModal({ ...modal, upd: !modal.upd, id: item._id })
+                  }
+                  className="p-2 rounded-xl bg-green-600 hover:bg-green-400 active:bg-green-600 text-white"
+                >
+                  <SquarePen />
+                </button>
+              </div>
+            </div>
+          ))
+        )}
       </div>
 
       {/* Overlay */}

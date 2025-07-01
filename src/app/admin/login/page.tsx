@@ -41,7 +41,7 @@ export default function AdminLogin() {
 
   return (
     <>
-      <div className="absolute top-1/2 left-1/2 -translate-1/2 max-w-md mx-auto p-4 bg-white shadow-lg rounded">
+      <div className="absolute top-1/2 left-1/2 -translate-1/2 max-w-md sm:w-auto w-[95%] mx-auto p-4 bg-white shadow-lg rounded">
         <h2 className="text-xl font-bold mb-4 text-center">Admin Login</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <input

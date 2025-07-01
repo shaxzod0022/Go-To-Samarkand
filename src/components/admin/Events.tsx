@@ -133,86 +133,90 @@ const Events = () => {
       />
 
       <div
-        className={`flex items-center flex-wrap ${
-          loading ? "justify-around" : "justify-between"
-        } ${events.length < 4 && "justify-start"} !items-start gap-5 flex-wrap`}
+        className={`${styles.flexBetween} ${
+          events.length < 4 && "justify-start"
+        } !items-start gap-5 flex-wrap`}
       >
-        {loading
-          ? [1, 2, 3, 4].map((_, i) => (
-              <p key={i} className="card_loader p-28"></p>
-            ))
-          : events.map((item) => (
-              <div
-                key={item._id}
-                className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
-              >
-                <img
-                  src={`https://gotosamarkand.onrender.com/static/${item.image}`}
-                  alt="Event Image"
-                  className="w-full h-52 object-cover rounded-t-xl"
-                />
-                <div className="p-3 text-left">
-                  <div className={`${styles.flex} mb-2`}>
-                    <Star className="text-yellow-500" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl xl:text-2xl font-bold my-2">
-                    {item.title[lang as keyof LocalizedText]}
-                  </h3>
-                  <p className="text-sm sm:text-md xl:text-lg mb-2 text-gray-600">
-                    {item.description[lang as keyof LocalizedText]}
-                  </p>
-                  <p className="text-green-600 mb-2 font-semibold text-lg">
-                    <span>For adults price:</span> USD {item.price}$
-                  </p>
-                  <p className="text-green-600 mb-2 font-semibold text-lg">
-                    <span>For children price:</span> USD {item.childrenPrice}$
-                  </p>
-                  <p className="text-green-600 mb-2 font-semibold text-lg">
-                    <span>For infants price:</span> USD {item.infantsPrice}$
-                  </p>
-                  <p className="mb-2 font-semibold text-lg">
-                    <span>Start date:</span>{" "}
-                    {new Date(item.startDate).toLocaleTimeString("uz-UZ", {
-                      timeZone: "Asia/Samarkand",
-                      year: "numeric",
-                      month: "2-digit",
-                      day: "2-digit",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </p>
-                  <p className="mb-2 font-semibold text-lg">
-                    <span>Start date:</span>{" "}
-                    {new Date(item.endDate).toLocaleTimeString("uz-UZ", {
-                      timeZone: "Asia/Samarkand",
-                      year: "numeric",
-                      month: "2-digit",
-                      day: "2-digit",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </p>
-                </div>
-                <div className={`${styles.flexStart} gap-3 p-3`}>
-                  <button
-                    onClick={() =>
-                      setModal({ ...modal, del: !modal.del, id: item._id })
-                    }
-                    className="p-2 rounded-xl bg-red-600 hover:bg-red-400 active:bg-red-600 text-white"
-                  >
-                    <Trash2 />
-                  </button>
-                  <button
-                    onClick={() =>
-                      setModal({ ...modal, upd: !modal.upd, id: item._id })
-                    }
-                    className="p-2 rounded-xl bg-green-600 hover:bg-green-400 active:bg-green-600 text-white"
-                  >
-                    <SquarePen />
-                  </button>
-                </div>
-              </div>
+        {loading ? (
+          <div className={`${styles.flexAround} w-full`}>
+            {[1, 2, 3, 4].map((i, x) => (
+              <p key={x} className="card_loader p-28"></p>
             ))}
+          </div>
+        ) : (
+          events.map((item) => (
+            <div
+              key={item._id}
+              className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
+            >
+              <img
+                src={`https://gotosamarkand.onrender.com/static/${item.image}`}
+                alt="Event Image"
+                className="w-full h-52 object-cover rounded-t-xl"
+              />
+              <div className="p-3 text-left">
+                <div className={`${styles.flex} mb-2`}>
+                  <Star className="text-yellow-500" />
+                </div>
+                <h3 className="text-lg sm:text-xl xl:text-2xl font-bold my-2">
+                  {item.title[lang as keyof LocalizedText]}
+                </h3>
+                <p className="text-sm sm:text-md xl:text-lg mb-2 text-gray-600">
+                  {item.description[lang as keyof LocalizedText]}
+                </p>
+                <p className="text-green-600 mb-2 font-semibold text-lg">
+                  <span>For adults price:</span> USD {item.price}$
+                </p>
+                <p className="text-green-600 mb-2 font-semibold text-lg">
+                  <span>For children price:</span> USD {item.childrenPrice}$
+                </p>
+                <p className="text-green-600 mb-2 font-semibold text-lg">
+                  <span>For infants price:</span> USD {item.infantsPrice}$
+                </p>
+                <p className="mb-2 font-semibold text-lg">
+                  <span>Start date:</span>{" "}
+                  {new Date(item.startDate).toLocaleTimeString("uz-UZ", {
+                    timeZone: "Asia/Samarkand",
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </p>
+                <p className="mb-2 font-semibold text-lg">
+                  <span>Start date:</span>{" "}
+                  {new Date(item.endDate).toLocaleTimeString("uz-UZ", {
+                    timeZone: "Asia/Samarkand",
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </p>
+              </div>
+              <div className={`${styles.flexStart} gap-3 p-3`}>
+                <button
+                  onClick={() =>
+                    setModal({ ...modal, del: !modal.del, id: item._id })
+                  }
+                  className="p-2 rounded-xl bg-red-600 hover:bg-red-400 active:bg-red-600 text-white"
+                >
+                  <Trash2 />
+                </button>
+                <button
+                  onClick={() =>
+                    setModal({ ...modal, upd: !modal.upd, id: item._id })
+                  }
+                  className="p-2 rounded-xl bg-green-600 hover:bg-green-400 active:bg-green-600 text-white"
+                >
+                  <SquarePen />
+                </button>
+              </div>
+            </div>
+          ))
+        )}
       </div>
 
       {/* Overlay */}

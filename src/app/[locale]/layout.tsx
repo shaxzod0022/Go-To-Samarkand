@@ -16,14 +16,14 @@ interface LocaleLayoutProps {
 
 export default async function LocaleLayout({
   children,
-  params,
+  params: { locale },
 }: LocaleLayoutProps) {
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
-    <html lang={params.locale} suppressHydrationWarning className="hydrate">
+    <html lang={locale} suppressHydrationWarning className="hydrate">
       <body className="antialiased mx-auto w-full max-w-[1800px]">
-        <NextIntlClientProvider locale={params.locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar />
           {children}
           <Footer />

@@ -29,7 +29,9 @@ const Tours = () => {
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        const res = await axios.get("https://gotosamarkand.onrender.com/api/tour/all-tour");
+        const res = await axios.get(
+          "https://gotosamarkand.onrender.com/api/tour/all-tour"
+        );
         setTours(res.data);
       } catch (err) {
         console.error("Error fetching tours");
@@ -68,10 +70,10 @@ const Tours = () => {
                     <Star className="text-yellow-500" />
                   </div>
                   <h3 className="text-lg sm:text-xl xl:text-2xl font-bold my-2">
-                    {item.title[lang as keyof LocalizedText]}
+                    {item.title[lang as keyof LocalizedText].slice(0, 15)}. . .
                   </h3>
                   <p className="text-sm sm:text-md xl:text-lg mb-2 text-gray-600">
-                    {item.description[lang as keyof LocalizedText].slice(0, 60)}
+                    {item.description[lang as keyof LocalizedText].slice(0, 50)}
                     . . .
                   </p>
                   <div className={`${styles.flexBetween}`}>

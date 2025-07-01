@@ -25,7 +25,7 @@ const Navbar = () => {
         <span className="bg-yellow-300 w-10 h-10 rounded-full"></span>
         <h2 className="font-bold lg:text-4xl sm:text-2xl text-xl">
           {/* {t("logo")} */}
-          Go To Samarkad
+          Go To Samarkand
         </h2>
       </Link>
       <nav className={`${styles.flex} gap-3 relative`}>

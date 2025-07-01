@@ -29,13 +29,6 @@ const HomePage = () => {
       />
       <Tours />
       <TopTitle
-        newClass="bg-yellow-300/40"
-        id="gallery"
-        title={gallery("title")}
-        description={gallery("description")}
-      />
-      <Gallery />
-      <TopTitle
         newClass="bg-gray-300/40"
         id="services"
         title={servic("title")}
@@ -49,6 +42,13 @@ const HomePage = () => {
         description={event("description")}
       />
       <Events />
+      <TopTitle
+        newClass="bg-yellow-300/40"
+        id="gallery"
+        title={gallery("title")}
+        description={gallery("description")}
+      />
+      <Gallery />
     </>
   );
 };

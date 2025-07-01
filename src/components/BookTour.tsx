@@ -188,7 +188,7 @@ const BookTour = () => {
       </div>
 
       {/* O'ng tomonda forma */}
-      <div className="lg:w-1/3 w-full bg-white lg:py-0 lg:px-5">
+      <div className="lg:w-1/3 w-full lg:mt-0 mt-5 bg-white lg:py-0 lg:px-5">
         <h3 className="text-2xl font-bold mb-4">{t("title")}</h3>
         <form onSubmit={handleSubmit} className={`${styles.flexCol} gap-4`}>
           <input
@@ -219,7 +219,9 @@ const BookTour = () => {
             required
             className="w-full border p-4 rounded-lg border-blue-500 outline-blue-700"
           />
-          <label htmlFor="date">{t("date")}</label>
+          <label htmlFor="date" className="font-semibold">
+            {t("date")}
+          </label>
           <input
             type="datetime-local"
             name="date"
@@ -232,7 +234,7 @@ const BookTour = () => {
           {rawPeople.map(({ category, label, age }) => (
             <div
               key={category}
-              className={`${styles.flexBetween} gap-4 border-y border-gray-400 p-3`}
+              className={`${styles.flexBetween} gap-4 border rounded-lg border-blue-500 p-3`}
             >
               <label className={`${styles.flexCol} items-center capitalize`}>
                 <strong>{label}</strong>

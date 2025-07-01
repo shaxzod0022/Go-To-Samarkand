@@ -1,26 +1,24 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2020", // Yangiroq versiyaga o'zgartirildi
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true, // Qo'shildi
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node", // "bundler" o'rniga "node"
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "baseUrl": ".", // Qo'shildi
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["next", "next/types", "next/navigation"] // Qo'shildi
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

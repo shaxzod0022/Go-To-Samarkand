@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   description: "You can use our services through this site",
 };
 
-interface LocaleLayoutProps {
-  children: React.ReactNode;
-  params: { locale: string };
-}
-
 export default async function LocaleLayout({
   children,
-  params: { locale },
-}: LocaleLayoutProps) {
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  // params ni await bilan kutib olamiz
+  const { locale } = await params;
   const messages = await getMessages({ locale });
 
   return (

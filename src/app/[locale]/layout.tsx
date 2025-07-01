@@ -9,18 +9,21 @@ export const metadata: Metadata = {
   description: "You can use our services through this site",
 };
 
+// O'zing type ber
+interface LocaleLayoutProps {
+  children: React.ReactNode;
+  params: { locale: string };
+}
+
 export default async function LocaleLayout({
   children,
   params: { locale },
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+}: LocaleLayoutProps) {
   const messages = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning className="hydrate">
-      <body className={`antialiased mx-auto w-full max-w-[1800px]`}>
+      <body className="antialiased mx-auto w-full max-w-[1800px]">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar />
           {children}

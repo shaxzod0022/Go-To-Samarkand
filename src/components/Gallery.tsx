@@ -8,6 +8,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+uz:string;
 }
 
 interface GalleryItem {
@@ -26,7 +27,7 @@ const Gallery = () => {
 
   // Tilda aniqlash
   useEffect(() => {
-    if (["en", "ru", "ja"].includes(locale)) {
+    if (["en","uz", "ru", "ja"].includes(locale)) {
       setLang(locale as keyof LocalizedText);
     }
   }, []);

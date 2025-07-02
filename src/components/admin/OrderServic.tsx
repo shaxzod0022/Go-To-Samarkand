@@ -11,6 +11,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Service {
@@ -30,6 +31,7 @@ interface OrderServiceProps {
   email: string;
   phone: string;
   date: Date;
+  citizenship: string;
   adults: number;
   children: number;
   infants: number;
@@ -45,6 +47,7 @@ const langs = [
   { id: 1, lang: "en", label: "🇺🇸 English" },
   { id: 2, lang: "ru", label: "🇷🇺 Русский" },
   { id: 3, lang: "ja", label: "🇯🇵 日本語" },
+  { id: 4, lang: "uz", label: "🇺🇿 Oʻzbekcha" },
 ];
 
 const OrderService = () => {
@@ -191,6 +194,10 @@ const OrderService = () => {
                     <li className="text-sm sm:text-md xl:text-lg my-2 bg-gray-100 p-1">
                       <span className="font-extralight">Phone:</span>{" "}
                       <span className="font-semibold">{item.phone}</span>
+                    </li>
+                    <li className="text-sm sm:text-md xl:text-lg my-2 bg-gray-100 p-1">
+                      <span className="font-extralight">Citizenship:</span>{" "}
+                      <span className="font-semibold">{item.citizenship}</span>
                     </li>
                     <li className="text-sm sm:text-md xl:text-lg my-2 bg-gray-100 p-1">
                       <span className="font-extralight">Start time:</span>{" "}

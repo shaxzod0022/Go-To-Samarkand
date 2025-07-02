@@ -6,8 +6,9 @@ import { Globe } from "lucide-react";
 import { styles } from "@/styles/styles";
 
 const languageOptions = [
-  { value: "en", label: "English", icons: "us" },
+  { value: "uz", label: "O‘zbek", icons: "uz" },
   { value: "ru", label: "Русский", icons: "ru" },
+  { value: "en", label: "English", icons: "us" },
   { value: "ja", label: "日本語", icons: "jp" },
 ];
 
@@ -24,9 +25,8 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
     (newLocale: string) => {
       setIsOpen(false);
 
-      // Shunchaki "/" bo'lsa yoki `pathname` root bo‘lsa
       const segments = pathname.split("/").filter(Boolean);
-      segments[0] = newLocale; // birinchi bo'lim bu til bo'ladi
+      segments[0] = newLocale;
       const newPath = "/" + segments.join("/");
 
       router.replace(newPath);

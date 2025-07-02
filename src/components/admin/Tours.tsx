@@ -13,6 +13,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Tour {
@@ -30,6 +31,7 @@ const langs = [
   { id: 1, lang: "en", label: "🇺🇸 English" },
   { id: 2, lang: "ru", label: "🇷🇺 Русский" },
   { id: 3, lang: "ja", label: "🇯🇵 日本語" },
+  { id: 4, lang: "uz", label: "🇺🇿 Oʻzbekcha" },
 ];
 
 const Tours = () => {
@@ -52,9 +54,7 @@ const Tours = () => {
     const fetchTours = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(
-          "https://gotosamarkand.onrender.com/api/tour/all-tour"
-        );
+        const res = await axios.get("https://gotosamarkand.onrender.com/api/tour/all-tour");
         setTours(res.data);
       } catch (err) {
         console.error("❌ Xatolik:", err);
@@ -124,9 +124,9 @@ const Tours = () => {
             ))}
           </div>
         ) : (
-          tours.map((item) => (
+          tours.map((item, idx) => (
             <div
-              key={item._id}
+              key={idx}
               className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200  bg-white"
             >
               <img

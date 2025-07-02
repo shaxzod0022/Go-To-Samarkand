@@ -25,7 +25,7 @@
   },
   "gallery": {
     "title": "Gallery",
-    "description": "We offer guided tours, transfers, photography, booking assistance, and cultural workshops tailored to your preferences."
+    "description": "Samarkand is a city that captivates hearts with its ancient history, elegant architecture, musical streets, friendly people, colorful bazaars, and the magical nights of Registan Square."
   },
   "event": {
     "title": "Events",
@@ -93,7 +93,7 @@
     "fullName": "Full name",
     "email": "Email",
     "phone": "Phone number: +123...",
-    "date": "Tour date and time",
+    "date": { "tour": "Tour date and time", "servic": "Servic date and time" },
     "adults": "Adults",
     "children": "Children",
     "infants": "Infants",

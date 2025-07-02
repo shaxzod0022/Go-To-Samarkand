@@ -13,6 +13,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Gallery {
@@ -27,6 +28,7 @@ const langs = [
   { id: 1, lang: "en", label: "🇺🇸 English" },
   { id: 2, lang: "ru", label: "🇷🇺 Русский" },
   { id: 3, lang: "ja", label: "🇯🇵 日本語" },
+  { id: 3, lang: "uz", label: "🇺🇿 Oʻzbekcha" },
 ];
 
 const Gallery = () => {
@@ -102,9 +104,9 @@ const Gallery = () => {
       </h2>
 
       <div className={`${styles.flexCenter} gap-4 mb-4`}>
-        {langs.map((item) => (
+        {langs.map((item, idx) => (
           <button
-            key={item.id}
+            key={idx}
             onClick={() => setLang(item.lang)}
             className={`px-4 py-2 rounded-md font-medium transition-colors duration-200 
               ${
@@ -143,9 +145,9 @@ const Gallery = () => {
             ))}
           </div>
         ) : (
-          galleryItems.map((item) => (
+          galleryItems.map((item, idx) => (
             <div
-              key={item._id}
+              key={idx}
               className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
             >
               <img

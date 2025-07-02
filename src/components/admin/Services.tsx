@@ -13,6 +13,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Servic {
@@ -30,6 +31,7 @@ const langs = [
   { id: 1, lang: "en", label: "🇺🇸 English" },
   { id: 2, lang: "ru", label: "🇷🇺 Русский" },
   { id: 3, lang: "ja", label: "🇯🇵 日本語" },
+  { id: 4, lang: "uz", label: "🇺🇿 Oʻzbekcha" },
 ];
 
 const Services = () => {

@@ -11,6 +11,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Tour {
@@ -30,6 +31,7 @@ interface OrderTourProps {
   email: string;
   phone: string;
   date: Date;
+  citizenship: string;
   adults: number;
   children: number;
   infants: number;
@@ -45,6 +47,7 @@ const langs = [
   { id: 1, lang: "en", label: "🇺🇸 English" },
   { id: 2, lang: "ru", label: "🇷🇺 Русский" },
   { id: 3, lang: "ja", label: "🇯🇵 日本語" },
+  { id: 4, lang: "uz", label: "🇺🇿 Oʻzbekcha" },
 ];
 
 const OrderTour = () => {
@@ -164,9 +167,9 @@ const OrderTour = () => {
           ? [1, 2, 3, 4].map((_, i) => (
               <p key={i} className="card_loader p-28"></p>
             ))
-          : tours.map((item) => (
+          : tours.map((item, idx) => (
               <div
-                key={item._id}
+                key={idx}
                 className="w-full lg:w-[23%] md:w-[30%] shadow-md rounded-xl bg-white"
               >
                 <img
@@ -194,6 +197,10 @@ const OrderTour = () => {
                     <li className="text-sm sm:text-md xl:text-lg my-2 bg-gray-100 p-1">
                       <span className="font-extralight">Phone:</span>{" "}
                       <span className="font-semibold">{item.phone}</span>
+                    </li>
+                    <li className="text-sm sm:text-md xl:text-lg my-2 bg-gray-100 p-1">
+                      <span className="font-extralight">Citizenship:</span>{" "}
+                      <span className="font-semibold">{item.citizenship}</span>
                     </li>
                     <li className="text-sm sm:text-md xl:text-lg my-2 bg-gray-100 p-1">
                       <span className="font-extralight">Tour start time:</span>{" "}

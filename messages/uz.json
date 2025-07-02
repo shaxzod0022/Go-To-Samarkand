@@ -1,0 +1,114 @@
+{
+  "navbar": {
+    "logo": "Go To Samarkand",
+    "navLinks": [
+      { "path": "", "label": "Bosh sahifa" },
+      { "path": "about", "label": "Biz haqimizda" },
+      { "path": "tours", "label": "Turlar" },
+      { "path": "gallery", "label": "Galereya" },
+      { "path": "services", "label": "Xizmatlar" },
+      { "path": "events", "label": "Tadbirlar" },
+      { "path": "contacts", "label": "Kontaktlar" }
+    ]
+  },
+  "head": {
+    "title": "Samarqandga xush kelibsiz",
+    "description": "Ushbu sayt orqali xizmatlarimizdan foydalanishingiz mumkin."
+  },
+  "about": {
+    "title": "Biz bilan Samarqandni kashf eting",
+    "description": "GoToSamarkand saytiga xush kelibsiz – tarix va madaniyat uyg‘unlashgan qadimiy Samarqand shahriga yo‘lingizni ochadigan platforma. Bu yerda siz arxitektura mo‘jizalaridan tortib jonli bozorlargacha bo‘lgan qiziqarli ekskursiyalarni topasiz. Markaziy Osiyoning yuragini suratlar galereyasi, batafsil tavsiflar va yaqinlashib kelayotgan madaniy tadbirlar haqidagi yangiliklar orqali o‘rganing. Bizning xizmatlarimiz yordamida sayohatingizni oson rejalashtirishingiz va buyurtma qilishingiz mumkin – yolg‘iz, juftlik yoki guruh bo‘lib sayohat qiling. Har bir turimiz tajribali gidlar tomonidan olib boriladi va ular sizga shahar haqidagi qiziqarli hikoyalar va yashirin joylarni ko‘rsatadi. Registon, Shoh-i Zinda majmuasi va o‘zbek hunarmandchiligini biz bilan kashf eting. Tadbirlar taqvimi va virtual galereyalar orqali Samarqand ruhini doimo his qilib boring. GoToSamarkand bilan har bir sayohat dunyoning eng qadimiy shaharlaridan birining qalbiga sayohatga aylanadi."
+  },
+  "servic": {
+    "title": "Xizmatlar",
+    "description": "Biz sizga gidlik xizmatlari, transfer, fotosessiya, bronlashga yordam va madaniy mahorat darslarini taqdim etamiz."
+  },
+  "gallery": {
+    "title": "Galereya",
+    "description": "Samarqand — qadimiy tarix, nafis me’morchilik, musiqali ko‘chalar, do‘ppili otalar, do‘stona xalq, rang-barang bozorlari va Registon maydonining sehrli kechalari bilan yuraklarni zabt etuvchi shahardir."
+  },
+  "event": {
+    "title": "Tadbirlar",
+    "description": "Shaharda o‘tkaziladigan madaniy festivallar, tarixiy turlar, musiqa kechalari va mahalliy ko‘rgazmalar kabi unutilmas tadbirlarni kashf eting."
+  },
+  "tour": {
+    "title": "Mashhur turlar",
+    "description": "Tarix, madaniyat va hayratomuz manzaralar bilan to‘la unutilmas sayohatlar.",
+    "descriptionAll": "Tarix va zamonaviy hayot uyg‘unlashgan Samarqandga safarga chiqing. Bizning turlarimiz Registon maydoni, muqaddas Shoh-i Zinda majmuasi, Bibixonim maqbarasi va Ulug‘bekning qadimiy rasadxonasi kabi joylarni o‘z ichiga oladi. Islom me’morchiligi go‘zalligi, Ipak yo‘li merosi va o‘zbek mehmondo‘stligini his eting. Biz sizga gidlik ekskursiyalari, transfer, fotosessiyalar va oshpazlik mahorat darslarini taklif qilamiz. Samarqandning madaniyati, tarixi va ta’mlarini bir safarda kashf eting va unutilmas xotiralarni oling.",
+    "tours": [
+      {
+        "id": 1,
+        "title": "Registon",
+        "description": "Registon tarixiy madrasalar va me’moriy mo‘jizalarga boy mashhur maydon.",
+        "image": "registan",
+        "grade": 4,
+        "price": 100
+      },
+      {
+        "id": 2,
+        "title": "Ulug‘bek rasadxonasi",
+        "description": "Ulug‘bek rasadxonasi qadimiy astronomik tadqiqotlar maskani.",
+        "image": "ulugbek",
+        "grade": 4,
+        "price": 100
+      },
+      {
+        "id": 3,
+        "title": "Shoh-i Zinda",
+        "description": "Shoh-i Zinda – ruhiy va me’moriy go‘zallikka boy maqbaralar majmuasi.",
+        "image": "shaxizinda",
+        "grade": 3,
+        "price": 100
+      },
+      {
+        "id": 4,
+        "title": "Bibixonim maqbarasi",
+        "description": "Bibixonim maqbarasi o‘zining ajoyib go‘zalligi bilan mashhur tarixiy yodgorlik.",
+        "image": "reg2",
+        "grade": 4,
+        "price": 100
+      }
+    ]
+  },
+  "footer": {
+    "title": "Samarqandga xush kelibsiz",
+    "copiright": "© 2024 GoToSamarkand. Barcha huquqlar himoyalangan.",
+    "description": "Ushbu sayt orqali xizmatlarimizdan foydalanishingiz mumkin.",
+    "label": "Ijtimoiy tarmoqlarda kuzating",
+    "btnTitle": "Yuborish",
+    "email": "Elektron pochta",
+    "placeholder": "Xabar yuboring!",
+    "contacts": [
+      {
+        "path": "https://www.instagram.com/gotosamarkand/",
+        "icon": "Instagram"
+      },
+      { "path": "https://www.facebook.com/gotosamarkand/", "icon": "Facebook" },
+      { "path": "https://www.youtube.com/@gotosamarkand", "icon": "Youtube" },
+      { "path": "https://t.me/gotosamarkand", "icon": "Send" }
+    ]
+  },
+  "booktour": {
+    "title": "Buyurtma",
+    "fullName": "To‘liq ism",
+    "email": "Elektron pochta",
+    "phone": "Telefon raqami: +123...",
+    "date": {
+      "tour": "Tur sanasi va vaqti",
+      "servic": "Xizmat sanasi va vaqti"
+    },
+    "adults": "Kattalar",
+    "children": "Bolalar",
+    "infants": "Yangi tug‘ilganlar",
+    "age": "Yosh",
+    "guest": "Jami mehmonlar",
+    "price": "Jami narx",
+    "send": "Yuborish",
+    "comment": "Izoh",
+    "peopleCategories": [
+      { "category": "adults", "label": "Kattalar", "age": "8 - 80" },
+      { "category": "children", "label": "Bolalar", "age": "3 - 7" },
+      { "category": "infants", "label": "Yangi tug‘ilganlar", "age": "0 - 2" }
+    ]
+  }
+}

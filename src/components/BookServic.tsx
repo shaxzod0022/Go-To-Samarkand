@@ -7,11 +7,13 @@ import { useLocale, useTranslations } from "next-intl";
 import Btn from "./Btn";
 import { Minus, Plus } from "lucide-react";
 import BackMessage from "./BackMessage";
+import CitizenshipSelect from "./Citizenship";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Servic {
@@ -45,6 +47,7 @@ const BookServic = () => {
     fullName: "",
     email: "",
     phone: "",
+    citizenship: "",
     date: "",
     adults: 1,
     children: 0,
@@ -60,6 +63,7 @@ const BookServic = () => {
         fullName: parseData.fullName || "",
         email: parseData.email || "",
         phone: parseData.phone || "",
+        citizenship: parseData.citizenship || "",
         date: "",
         adults: 1,
         children: 0,
@@ -214,8 +218,11 @@ const BookServic = () => {
             required
             className="w-full border p-4 rounded-lg border-blue-500 outline-blue-700"
           />
+          <CitizenshipSelect
+            onChange={(value) => setForm({ ...form, citizenship: value })}
+          />
           <label htmlFor="date" className="font-semibold">
-            {t("date")}
+            {t("date.servic")}
           </label>
           <input
             type="datetime-local"

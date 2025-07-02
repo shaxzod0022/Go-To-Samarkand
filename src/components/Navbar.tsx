@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { PanelRightOpen } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Logo2 } from "@/assets";
+import Image from "next/image";
 
 interface NavLink {
   path: string;
@@ -22,7 +24,8 @@ const Navbar = () => {
       className={`bg-white z-20 fixed top-0 mx-auto w-full max-w-[1800px] ${styles.flexBetween} ${styles.paddingCont} py-4 shadow-sm`}
     >
       <Link href="/" className={`${styles.flexStart} gap-3`}>
-        <span className="bg-yellow-300 w-10 h-10 rounded-full"></span>
+        {/* <span className="bg-yellow-300 w-10 h-10 rounded-full"></span> */}
+        <Image src={Logo2} className="w-10 h-10" alt="logo" />
         <h2 className="font-bold lg:text-4xl sm:text-2xl text-xl">
           {/* {t("logo")} */}
           Go To Samarkand

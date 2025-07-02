@@ -7,11 +7,13 @@ import { useLocale, useTranslations } from "next-intl";
 import Btn from "./Btn";
 import { Minus, Plus } from "lucide-react";
 import BackMessage from "./BackMessage";
+import CitizenshipSelect from "./Citizenship";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Event {
@@ -47,6 +49,7 @@ const BookEvent = () => {
     fullName: "",
     email: "",
     phone: "",
+    citizenship: "",
     adults: 1,
     children: 0,
     infants: 0,
@@ -61,6 +64,7 @@ const BookEvent = () => {
         fullName: parseData.fullName || "",
         email: parseData.email || "",
         phone: parseData.phone || "",
+        citizenship: parseData.citizenship || "",
         adults: 1,
         children: 0,
         infants: 0,
@@ -234,7 +238,9 @@ const BookEvent = () => {
             required
             className="w-full border p-4 rounded-lg border-blue-500 outline-blue-700"
           />
-
+          <CitizenshipSelect
+            onChange={(value) => setForm({ ...form, citizenship: value })}
+          />
           {rawPeople.map(({ category, label, age }) => (
             <div
               key={category}

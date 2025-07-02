@@ -9,6 +9,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Event {
@@ -86,8 +87,14 @@ const UpdateEvent: FC<UpdateProps> = ({ onCancel, modal, data, lang }) => {
     fd.append("price", formData.price.toString());
     fd.append("childrenPrice", formData.childrenPrice.toString());
     fd.append("infantsPrice", formData.infantsPrice.toString());
-    fd.append("startDate", formData.startDate);
-    fd.append("endDate", formData.endDate);
+
+    // 👉 faqat qiymati bor bo‘lsa qo‘sh
+    if (formData.startDate && formData.startDate.trim() !== "") {
+      fd.append("startDate", formData.startDate);
+    }
+    if (formData.endDate && formData.endDate.trim() !== "") {
+      fd.append("endDate", formData.endDate);
+    }
     if (imageFile) {
       fd.append("image", imageFile);
     } else {

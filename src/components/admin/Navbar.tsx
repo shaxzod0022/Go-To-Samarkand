@@ -15,7 +15,7 @@ const Navbar = () => {
   const navLinks = nav.navbar.navLinks as NavLink[];
   const [modal, setModal] = useState<boolean>(false);
   const pathname = usePathname();
-  
+
   return (
     <div
       className={`bg-white z-20 fixed top-0 mx-auto w-full max-w-[1800px] ${styles.flexBetween} ${styles.paddingCont} py-4 shadow-sm`}
@@ -40,6 +40,17 @@ const Navbar = () => {
             modal ? "right-0 top-16" : "top-0 -right-[100%]"
           }`}
         >
+          <li>
+            <Link
+              onClick={() => setModal(false)}
+              href={"/admin"}
+              className={`${
+                pathname === "/admin" && "text-yellow-300"
+              } text-lg font-semibold transition-colors duration-200 hover:text-yellow-300`}
+            >
+              Dashboard
+            </Link>
+          </li>
           {navLinks.slice(2, 6).map((link) => (
             <li key={link.path}>
               <Link

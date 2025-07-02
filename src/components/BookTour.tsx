@@ -7,11 +7,13 @@ import { useLocale, useTranslations } from "next-intl";
 import Btn from "./Btn";
 import { Minus, Plus } from "lucide-react";
 import BackMessage from "./BackMessage";
+import CitizenshipSelect from "./Citizenship";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+  uz: string;
 }
 
 interface Tour {
@@ -46,6 +48,7 @@ const BookTour = () => {
     fullName: "",
     email: "",
     phone: "",
+    citizenship: "",
     date: "",
     adults: 1,
     children: 0,
@@ -61,6 +64,7 @@ const BookTour = () => {
         fullName: parseData.fullName || "",
         email: parseData.email || "",
         phone: parseData.phone || "",
+        citizenship: parseData.citizenship || "",
         date: "",
         adults: 1,
         children: 0,
@@ -96,15 +100,13 @@ const BookTour = () => {
   ) => {
     const { name, value } = e.target;
 
-    // faqat phone uchun filtrlash
     if (name === "phone") {
       const filteredPhone = value
-        .replace(/[^0-9+]/g, "") // faqat + va raqamlar
-        .replace(/\+(?=.*\+)/g, ""); // faqat 1 dona + bo'lishiga ruxsat
+        .replace(/[^0-9+]/g, "")
+        .replace(/\+(?=.*\+)/g, "");
 
       setForm({ ...form, [name]: filteredPhone });
     } else {
-      // qolgan inputlar uchun hech qanday filter yo‘q
       setForm({ ...form, [name]: value });
     }
   };
@@ -134,6 +136,7 @@ const BookTour = () => {
           fullName: form.fullName,
           email: form.email,
           phone: form.phone,
+          citizenship: form.citizenship,
         })
       );
 
@@ -219,8 +222,11 @@ const BookTour = () => {
             required
             className="w-full border p-4 rounded-lg border-blue-500 outline-blue-700"
           />
+          <CitizenshipSelect
+            onChange={(value) => setForm({ ...form, citizenship: value })}
+          />
           <label htmlFor="date" className="font-semibold">
-            {t("date")}
+            {t("date.tour")}
           </label>
           <input
             type="datetime-local"

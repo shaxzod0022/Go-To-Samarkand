@@ -105,7 +105,7 @@ const AddGallery: React.FC<AddGalleryProps> = ({ modal, onCancel }) => {
       {/* TITLE */}
       <div className="mb-3">
         <label className="font-medium">Title</label>
-        {["en", "ru", "ja"].map((lang) => (
+        {["en","uz", "ru", "ja"].map((lang) => (
           <input
             key={lang}
             placeholder={`Title (${lang})`}
@@ -119,7 +119,7 @@ const AddGallery: React.FC<AddGalleryProps> = ({ modal, onCancel }) => {
       {/* DESCRIPTION */}
       <div className="mb-3">
         <label className="font-medium">Description</label>
-        {["en", "ru", "ja"].map((lang) => (
+        {["en","uz", "ru", "ja"].map((lang) => (
           <textarea
             key={lang}
             placeholder={`Description (${lang})`}

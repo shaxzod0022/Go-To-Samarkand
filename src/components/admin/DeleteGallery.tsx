@@ -10,6 +10,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
+uz:string;
 }
 
 interface Gallery {

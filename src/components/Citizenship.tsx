@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import React, { FC, useEffect, useRef, useState } from "react";
 
 const countriesWithFlags = [
@@ -202,11 +203,12 @@ interface CitizenshipProps {
 }
 
 const CitizenshipSelect: FC<CitizenshipProps> = ({ onChange }) => {
+  const t = useTranslations("booktour");
   const [citizenship, setCitizenship] = useState<{
     label: string;
     icons: string;
   }>({
-    label: "Select country",
+    label: t("citizenship"),
     icons: "",
   });
 

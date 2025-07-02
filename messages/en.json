@@ -93,6 +93,7 @@
     "fullName": "Full name",
     "email": "Email",
     "phone": "Phone number: +123...",
+    "citizenship": "Choose your citizenship",
     "date": { "tour": "Tour date and time", "servic": "Servic date and time" },
     "adults": "Adults",
     "children": "Children",

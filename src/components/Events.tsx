@@ -5,12 +5,13 @@ import { styles } from "@/styles/styles";
 import { CircleArrowRight, Star } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
+import StructuredData from "./StructuredData";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
-uz:string;
+  uz: string;
 }
 
 interface EventType {
@@ -63,6 +64,15 @@ const Events = () => {
                 onClick={() => router.push(`/events/${item._id}`)}
                 className="w-full cursor-pointer hover:scale-105 active:scale-100 lg:w-[23%] md:w-[30%] shadow-md rounded-xl transition-all duration-200 bg-white"
               >
+                <StructuredData
+                  type="tour"
+                  name={item?.title[lang as keyof LocalizedText]}
+                  description={item?.description[lang as keyof LocalizedText]}
+                  bookingPage={`https://gotosamarkand.com/tours/${item._id}`}
+                  image={`https://gotosamarkand.onrender.com/static/${item.image}`}
+                  price={item.price}
+                  currency="USD"
+                />
                 <img
                   src={`https://gotosamarkand.onrender.com/static/${item.image}`}
                   alt="Event Image"
@@ -76,7 +86,10 @@ const Events = () => {
                     {item?.title[lang as keyof LocalizedText].slice(0, 18)}. . .
                   </h3>
                   <p className="text-sm sm:text-md xl:text-lg mb-2 text-gray-600">
-                    {item?.description[lang as keyof LocalizedText].slice(0, 50)}
+                    {item?.description[lang as keyof LocalizedText].slice(
+                      0,
+                      50
+                    )}
                     . . .
                   </p>
                   <p className="text-sm sm:text-md xl:text-lg mb-2">

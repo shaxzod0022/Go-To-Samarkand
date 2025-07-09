@@ -21,6 +21,7 @@ interface EventType {
   image: string;
   price: number;
   startDate: string;
+  averageRating: number;
   endDate: string;
 }
 
@@ -28,22 +29,20 @@ const Events = () => {
   const router = useRouter();
   const [events, setEvents] = useState<EventType[]>([]);
   const [loading, setLoading] = useState(true);
-  const lang = useLocale(); // "en", "ru", "ja"
+  const lang = useLocale();
+
+  const fetchEvents = async () => {
+    try {
+      const res = await axios.get("https://gotosamarkand.onrender.com/api/event/all-event");
+      setEvents(res.data);
+    } catch (err) {
+      console.error("Error fetching events", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const res = await axios.get(
-          "https://gotosamarkand.onrender.com/api/event/all-event"
-        );
-        setEvents(res.data);
-      } catch (err) {
-        console.error("Error fetching events");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchEvents();
   }, []);
 
@@ -79,8 +78,9 @@ const Events = () => {
                   className="w-full h-52 object-cover rounded-t-xl"
                 />
                 <div className="p-3 text-left">
-                  <div className={`${styles.flex} mb-2`}>
+                  <div className={`${styles.flex} gap-2 mb-2`}>
                     <Star className="text-yellow-500" />
+                    <span className="font-semibold">{item.averageRating}</span>
                   </div>
                   <h3 className="text-lg sm:text-xl xl:text-2xl font-bold my-2">
                     {item?.title[lang as keyof LocalizedText].slice(0, 18)}. . .

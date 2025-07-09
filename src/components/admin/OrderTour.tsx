@@ -6,6 +6,7 @@ import { Star } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Btn from "../Btn";
 import BackMessage from "../BackMessage";
+import OrderStatusManager from "./OrderStatusManager";
 
 interface LocalizedText {
   en: string;
@@ -38,6 +39,7 @@ interface OrderTourProps {
   comment: string;
   totalPrice: number;
   commentAdmin: string;
+  orderStatus: string;
   _id: string;
   updatedAt: Date;
   createdAt: Date;
@@ -81,7 +83,6 @@ const OrderTour = () => {
           `https://gotosamarkand.onrender.com/api/tour-order/delete-order/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        // Tur o‘chirilgandan so‘ng localdan olib tashlaymiz
         setTours((prev) => prev.filter((t) => t._id !== id));
       }
 
@@ -138,7 +139,7 @@ const OrderTour = () => {
     return <div className="text-2xl font-bold h-40">Order Not Found</div>;
 
   return (
-    <div className={`${styles.paddingCont} mt-12 py-10 scroll-mt-12`}>
+    <div className={`${styles.paddingCont} mt-12 py-10 scroll-mt-12 mb-8`}>
       <h2 className="mb-3 text-xl md:text-3xl xl:text-4xl font-bold">
         Ordered Tours
       </h2>
@@ -245,7 +246,20 @@ const OrderTour = () => {
                     </li>
                   </ul>
                   <hr className="mb-2" />
-                  <label className="font-medium">Admin comment</label>
+                  <OrderStatusManager
+                    orderType="tour"
+                    orderId={item._id}
+                    initialStatus={
+                      item.orderStatus as
+                        | "pending"
+                        | "confirmed"
+                        | "completed"
+                        | "cancelled"
+                    }
+                  />
+                  <label className="font-medium mt-2 inline-block">
+                    Admin comment
+                  </label>
                   <textarea
                     className="w-full border border-blue-500 outline-blue-600 px-3 py-1 rounded mb-2"
                     value={comments[item._id] || ""}

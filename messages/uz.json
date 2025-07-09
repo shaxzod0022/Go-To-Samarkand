@@ -85,7 +85,8 @@
       },
       { "path": "https://www.facebook.com/gotosamarkand/", "icon": "Facebook" },
       { "path": "https://www.youtube.com/@gotosamarkand", "icon": "Youtube" },
-      { "path": "https://t.me/gotosamarkand", "icon": "Send" }
+      { "path": "https://t.me/gotosamarkand", "icon": "Send" },
+      { "path": "", "icon": "Linkedin" }
     ]
   },
   "booktour": {
@@ -106,10 +107,18 @@
     "price": "Jami narx",
     "send": "Yuborish",
     "comment": "Izoh",
+    "rating": "Baxosi",
     "peopleCategories": [
       { "category": "adults", "label": "Kattalar", "age": "8 - 80" },
       { "category": "children", "label": "Bolalar", "age": "3 - 7" },
       { "category": "infants", "label": "Yangi tug‘ilganlar", "age": "0 - 2" }
     ]
+  },
+  "rate": {
+    "title": "Tadbirni baholang",
+    "fullName": "To‘liq ism",
+    "totalPrice": "Umumiy narx",
+    "commentPlaceholder": "Tajribangiz haqida fikr bildiring...",
+    "submit": "Yuborish"
   }
 }

@@ -2,7 +2,7 @@
 import { styles } from "@/styles/styles";
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
-import { Instagram, Facebook, Send, Youtube } from "lucide-react";
+import { Instagram, Facebook, Send, Youtube, Linkedin } from "lucide-react";
 import Link from "next/link";
 import Btn from "./Btn";
 import { usePathname } from "next/navigation";
@@ -14,6 +14,7 @@ const iconMap: Record<string, React.ElementType> = {
   Facebook,
   Send,
   Youtube,
+  Linkedin,
 };
 
 interface FooterContacts {

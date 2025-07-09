@@ -43,7 +43,7 @@ const AboutUs = () => {
   return (
     <div
       id="about"
-      className={`${styles.flexBetween} ${styles.paddingCont} gap-5 lg:py-10 sm:py-6 py-4 scroll-mt-12`}
+      className={`${styles.flexBetween} ${styles.paddingCont} gap-5 lg:py-10 sm:py-6 py-4 scroll-mt-16`}
     >
       {/* Chap taraf - matn */}
       <div className="md:w-[47%] w-full">

@@ -20,6 +20,7 @@ interface Servic {
   description: LocalizedText;
   image: string;
   price: number;
+  averageRating: number;
 }
 
 const Services = () => {
@@ -77,8 +78,9 @@ const Services = () => {
                   className="w-full h-52 object-cover rounded-t-xl"
                 />
                 <div className="p-3 text-left">
-                  <div className={`${styles.flex} mb-2`}>
+                  <div className={`${styles.flex} gap-2 mb-2`}>
                     <Star className="text-yellow-500" />
+                    <span className="font-semibold">{item.averageRating}</span>
                   </div>
                   <h3 className="text-lg sm:text-xl xl:text-2xl font-bold my-2">
                     {item?.title[lang as keyof LocalizedText].slice(0, 18)}. . .

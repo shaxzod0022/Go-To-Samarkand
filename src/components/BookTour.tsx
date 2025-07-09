@@ -5,7 +5,7 @@ import axios from "axios";
 import { styles } from "@/styles/styles";
 import { useLocale, useTranslations } from "next-intl";
 import Btn from "./Btn";
-import { Minus, Plus } from "lucide-react";
+import { CircleUserRound, Minus, Plus } from "lucide-react";
 import BackMessage from "./BackMessage";
 import CitizenshipSelect from "./Citizenship";
 
@@ -26,6 +26,14 @@ interface Tour {
   image: string;
 }
 
+interface Rating {
+  comment: string;
+  createdAt: string;
+  rating: number;
+  guestFullName: string;
+  onModel: string;
+}
+
 type PersonCategory = {
   category: "adults" | "children" | "infants";
   label: string;
@@ -37,11 +45,10 @@ const BookTour = () => {
   const lang = useLocale();
   const t = useTranslations("booktour");
   const [tour, setTour] = useState<Tour | null>(null);
+  const [rating, setRating] = useState<Rating[] | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [load, setLoad] = useState<boolean>(false);
-
-  // get categories from translation JSON
   const rawPeople = t.raw("peopleCategories") as PersonCategory[];
 
   const [form, setForm] = useState({
@@ -81,11 +88,17 @@ const BookTour = () => {
 
   const fetchTour = async () => {
     if (!tourId) return;
+    const onModel = "Tour";
     try {
-      const res = await axios.get(
+      const resTour = await axios.get(
         `https://gotosamarkand.onrender.com/api/tour/one-tour/${tourId}`
       );
-      setTour(res.data);
+      const resRating = await axios.get(
+        `https://gotosamarkand.onrender.com/api/rating/get-rating-for-item`,
+        { params: { itemId: tourId, onModel } }
+      );
+      setRating(resRating.data?.ratings);
+      setTour(resTour.data);
     } catch (err) {
       console.error("Tour fetch error:", err);
     }
@@ -188,6 +201,41 @@ const BookTour = () => {
           {tour.description[lang as keyof LocalizedText]}
         </p>
         <strong className="text-blue-600 text-xl">USD: ${tour.price}</strong>
+        <div className={`${styles.flexCol} gap-2 mt-7`}>
+          {!rating || rating === null
+            ? null
+            : rating.map((item, idx) => (
+                <div key={idx} className="border border-gray-300 rounded p-4">
+                  <h3
+                    className={`font-semibold flex items-center gap-2 lg:text-xl text-lg capitalize`}
+                  >
+                    <CircleUserRound className="text-yellow-300" />
+                    {item.guestFullName}
+                  </h3>
+                  <p className="lg:text-lg text-sm">{item.comment}</p>
+                  <div>
+                    <span className="font-semibold text-gray-500">
+                      {t("rating")}:
+                    </span>
+                    <span
+                      className={`font-bold mx-3 ${
+                        item.rating === 1
+                          ? "text-red-600"
+                          : item.rating === 2
+                          ? "text-red-400"
+                          : item.rating === 3
+                          ? "text-orange-300"
+                          : item.rating === 4
+                          ? "text-orange-500"
+                          : "text-yellow-300"
+                      }`}
+                    >
+                      {item.rating}
+                    </span>
+                  </div>
+                </div>
+              ))}
+        </div>
       </div>
 
       {/* O'ng tomonda forma */}

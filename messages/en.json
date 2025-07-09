@@ -85,7 +85,8 @@
       },
       { "path": "https://www.facebook.com/gotosamarkand/", "icon": "Facebook" },
       { "path": "https://www.youtube.com/@gotosamarkand", "icon": "Youtube" },
-      { "path": "https://t.me/gotosamarkand", "icon": "Send" }
+      { "path": "https://t.me/gotosamarkand", "icon": "Send" },
+      { "path": "", "icon": "Linkedin" }
     ]
   },
   "booktour": {
@@ -103,10 +104,18 @@
     "price": "Total price",
     "send": "Send",
     "comment": "Comment",
+    "rating": "Rating",
     "peopleCategories": [
       { "category": "adults", "label": "Adults", "age": "8 - 80" },
       { "category": "children", "label": "Children", "age": "3 - 7" },
       { "category": "infants", "label": "Infants", "age": "0 - 2" }
     ]
+  },
+  "rate": {
+    "title": "Rate your Event",
+    "fullName": "Full Name",
+    "totalPrice": "Total price",
+    "commentPlaceholder": "Leave a comment about your experience...",
+    "submit": "Submit"
   }
 }

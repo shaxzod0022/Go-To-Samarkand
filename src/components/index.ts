@@ -1,5 +1,5 @@
 export { default as Navbar } from "./Navbar";
-export { default as Head } from "./Head";
+export { default as Heading } from "./Head";
 export { default as Footer } from "./Footer";
 export { default as AboutUs } from "./AboutUs";
 export { default as TopTitle } from "./TopTitle";
@@ -13,3 +13,4 @@ export { default as BookEvent } from "./BookEvent";
 export { default as Services } from "./Services";
 export { default as Events } from "./Events";
 export { default as StructuredData } from "./StructuredData";
+export { default as RateUs } from "./RateUs";

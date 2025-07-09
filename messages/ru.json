@@ -94,7 +94,8 @@
       {
         "path": "https://t.me/gotosamarkand",
         "icon": "Send"
-      }
+      },
+      { "path": "", "icon": "Linkedin" }
     ]
   },
   "booktour": {
@@ -115,10 +116,18 @@
     "price": "Общая цена",
     "send": "Отправить",
     "comment": "Kомментарий",
+    "rating": "Рейтинг",
     "peopleCategories": [
       { "category": "adults", "label": "Взрослые", "age": "8 - 80" },
       { "category": "children", "label": "Дети", "age": "3 - 7" },
       { "category": "infants", "label": "Младенцы", "age": "0 - 2" }
     ]
+  },
+  "rate": {
+    "title": "Оцените мероприятие",
+    "fullName": "Полное имя",
+    "totalPrice": "Общая стоимость",
+    "commentPlaceholder": "Поделитесь своими впечатлениями...",
+    "submit": "Отправить"
   }
 }

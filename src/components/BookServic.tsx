@@ -5,7 +5,7 @@ import axios from "axios";
 import { styles } from "@/styles/styles";
 import { useLocale, useTranslations } from "next-intl";
 import Btn from "./Btn";
-import { Minus, Plus } from "lucide-react";
+import { CircleUserRound, Minus, Plus } from "lucide-react";
 import BackMessage from "./BackMessage";
 import CitizenshipSelect from "./Citizenship";
 
@@ -14,6 +14,14 @@ interface LocalizedText {
   ru: string;
   ja: string;
   uz: string;
+}
+
+interface Rating {
+  comment: string;
+  createdAt: string;
+  rating: number;
+  guestFullName: string;
+  onModel: string;
 }
 
 interface Servic {
@@ -37,6 +45,7 @@ const BookServic = () => {
   const lang = useLocale();
   const t = useTranslations("booktour");
   const [servic, setServic] = useState<Servic | null>(null);
+  const [rating, setRating] = useState<Rating[] | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [load, setLoad] = useState<boolean>(false);
@@ -80,11 +89,17 @@ const BookServic = () => {
 
   const fetchServic = async () => {
     if (!servicId) return;
+    const onModel = "Servic";
     try {
       const res = await axios.get(
         `https://gotosamarkand.onrender.com/api/servic/one-servic/${servicId}`
       );
       setServic(res.data);
+      const resRating = await axios.get(
+        `https://gotosamarkand.onrender.com/api/rating/get-rating-for-item`,
+        { params: { itemId: servicId, onModel } }
+      );
+      setRating(resRating.data?.ratings);
     } catch (err) {
       console.error("Service fetch error:", err);
     }
@@ -185,6 +200,41 @@ const BookServic = () => {
           {servic.description[lang as keyof LocalizedText]}
         </p>
         <strong className="text-blue-600 text-xl">USD: ${servic.price}</strong>
+        <div className={`${styles.flexCol} gap-2 mt-7`}>
+          {!rating || rating === null
+            ? null
+            : rating.map((item, idx) => (
+                <div key={idx} className="border border-gray-300 rounded p-4">
+                  <h3
+                    className={`font-semibold flex items-center gap-2 lg:text-xl text-lg capitalize`}
+                  >
+                    <CircleUserRound className="text-yellow-300" />
+                    {item.guestFullName}
+                  </h3>
+                  <p className="lg:text-lg text-sm">{item.comment}</p>
+                  <div>
+                    <span className="font-semibold text-gray-500">
+                      {t("rating")}:
+                    </span>
+                    <span
+                      className={`font-bold mx-3 ${
+                        item.rating === 1
+                          ? "text-red-600"
+                          : item.rating === 2
+                          ? "text-red-400"
+                          : item.rating === 3
+                          ? "text-orange-300"
+                          : item.rating === 4
+                          ? "text-orange-500"
+                          : "text-yellow-300"
+                      }`}
+                    >
+                      {item.rating}
+                    </span>
+                  </div>
+                </div>
+              ))}
+        </div>
       </div>
 
       <div className="lg:w-1/3 lg:mt-0 mt-5 w-full bg-white lg:py-0 lg:px-5">

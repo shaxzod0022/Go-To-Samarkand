@@ -9,7 +9,7 @@ interface TopTitle {
 
 const TopTitle: FC<TopTitle> = ({ title, description, id, newClass }) => {
   return (
-    <div id={id} className={`${newClass} text-center md:p-8 p-4 scroll-mt-16`}>
+    <div id={id} className={`${newClass} text-center md:p-8 p-4 scroll-mt-18`}>
       <h2 className="font-bold lg:text-5xl sm:text-3xl text-xl sm:mb-5 mb-2">
         {title}
       </h2>

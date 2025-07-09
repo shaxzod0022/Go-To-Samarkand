@@ -94,7 +94,8 @@
       {
         "path": "https://t.me/gotosamarkand",
         "icon": "Send"
-      }
+      },
+      { "path": "", "icon": "Linkedin" }
     ]
   },
   "booktour": {
@@ -115,10 +116,18 @@
     "price": "合計金額",
     "send": "送信",
     "comment": "コメント",
+    "rating": "評価",
     "peopleCategories": [
       { "category": "adults", "label": "大人", "age": "8 - 80" },
       { "category": "children", "label": "子供", "age": "3 - 7" },
       { "category": "infants", "label": "乳児", "age": "0 - 2" }
     ]
+  },
+  "rate": {
+    "title": "イベントを評価してください",
+    "fullName": "氏名",
+    "totalPrice": "合計金額",
+    "commentPlaceholder": "体験についてコメントを残してください...",
+    "submit": "送信する"
   }
 }

@@ -9,7 +9,7 @@ interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
-uz:string;
+  uz: string;
 }
 
 interface Servic {
@@ -219,7 +219,7 @@ const UpdateServic: FC<UpdateProps> = ({ onCancel, modal, data, lang }) => {
       <BackMessage
         successMessage={success}
         errorMessage={error}
-        newClass="!top-28"
+        newClass="!top-40"
       />
     </div>
   );

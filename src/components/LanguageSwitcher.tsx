@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useCallback, memo } from "react";
 import { Globe } from "lucide-react";
 import { styles } from "@/styles/styles";
@@ -15,6 +15,7 @@ const languageOptions = [
 const LanguageSwitcher = memo(function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams(); // ⬅️ qo‘shildi
   const [isOpen, setIsOpen] = useState(false);
 
   const currentLocale =
@@ -29,9 +30,13 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
       segments[0] = newLocale;
       const newPath = "/" + segments.join("/");
 
-      router.replace(newPath);
+      // searchParams dan string qilib olamiz
+      const queryString = searchParams.toString();
+      const fullPath = queryString ? `${newPath}?${queryString}` : newPath;
+
+      router.replace(fullPath); // ⬅️ endi querylar ham bor
     },
-    [pathname, router]
+    [pathname, searchParams, router]
   );
 
   return (

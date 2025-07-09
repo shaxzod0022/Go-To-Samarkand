@@ -6,6 +6,7 @@ import { Star } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Btn from "../Btn";
 import BackMessage from "../BackMessage";
+import OrderStatusManager from "./OrderStatusManager";
 
 interface LocalizedText {
   en: string;
@@ -38,6 +39,7 @@ interface OrderServiceProps {
   comment: string;
   totalPrice: number;
   commentAdmin: string;
+  orderStatus: string;
   _id: string;
   updatedAt: Date;
   createdAt: Date;
@@ -242,7 +244,20 @@ const OrderService = () => {
                     </li>
                   </ul>
                   <hr className="mb-2" />
-                  <label className="font-medium">Admin comment</label>
+                  <OrderStatusManager
+                    orderType="servic"
+                    orderId={item._id}
+                    initialStatus={
+                      item.orderStatus as
+                        | "pending"
+                        | "confirmed"
+                        | "completed"
+                        | "cancelled"
+                    }
+                  />
+                  <label className="font-medium inline-block mt-2">
+                    Admin comment
+                  </label>
                   <textarea
                     className="w-full border border-blue-500 outline-blue-600 px-3 py-1 rounded mb-2"
                     value={comments[item._id] || ""}

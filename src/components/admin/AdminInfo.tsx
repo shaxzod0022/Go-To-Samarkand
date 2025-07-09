@@ -183,8 +183,16 @@ const AdminInfo = () => {
             <input
               type="text"
               name="firstName"
-              placeholder="firstName"
+              placeholder="First Name"
               value={formData.firstName}
+              onChange={handleFormChange}
+              className="w-full border-2 border-blue-600 p-2 rounded-lg"
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
               onChange={handleFormChange}
               className="w-full border-2 border-blue-600 p-2 rounded-lg"
             />
@@ -193,14 +201,6 @@ const AdminInfo = () => {
               name="email"
               placeholder="Email"
               value={formData.email}
-              onChange={handleFormChange}
-              className="w-full border-2 border-blue-600 p-2 rounded-lg"
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Telefon raqami"
-              value={formData.lastName}
               onChange={handleFormChange}
               className="w-full border-2 border-blue-600 p-2 rounded-lg"
             />

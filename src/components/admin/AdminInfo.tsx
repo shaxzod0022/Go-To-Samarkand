@@ -133,7 +133,7 @@ const AdminInfo = () => {
 
   const logOut = () => {
     sessionStorage.removeItem("adminData");
-    router.replace("/admin/login");
+    router.replace("/");
   };
 
   return (

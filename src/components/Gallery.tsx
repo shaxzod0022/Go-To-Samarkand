@@ -3,12 +3,13 @@ import React, { useState, useEffect } from "react";
 import { styles } from "@/styles/styles";
 import axios from "axios";
 import { useLocale } from "next-intl";
+import { GalleryService } from "@/services/gallery.service";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
-uz:string;
+  uz: string;
 }
 
 interface GalleryItem {
@@ -27,7 +28,7 @@ const Gallery = () => {
 
   // Tilda aniqlash
   useEffect(() => {
-    if (["en","uz", "ru", "ja"].includes(locale)) {
+    if (["en", "uz", "ru", "ja"].includes(locale)) {
       setLang(locale as keyof LocalizedText);
     }
   }, []);
@@ -36,10 +37,8 @@ const Gallery = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const res = await axios.get(
-          "https://gotosamarkand.onrender.com/api/gallery/all-gallery"
-        );
-        setGallery(res.data);
+        const res = await GalleryService.getAllGallerys();
+        setGallery(res);
       } catch (err) {
         console.error("❌ Gallery fetch error:", err);
       }

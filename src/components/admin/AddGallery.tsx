@@ -4,6 +4,7 @@ import axios from "axios";
 import Btn from "../Btn";
 import BackMessage from "../BackMessage";
 import { styles } from "@/styles/styles";
+import { GalleryService } from "@/services/gallery.service";
 
 interface AddGalleryProps {
   modal: boolean;
@@ -59,18 +60,9 @@ const AddGallery: React.FC<AddGalleryProps> = ({ modal, onCancel }) => {
       body.append("title", JSON.stringify(formData.title));
       body.append("description", JSON.stringify(formData.description));
 
-      const res = await axios.post(
-        "https://gotosamarkand.onrender.com/api/gallery/gallery-create",
-        body,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const res = await GalleryService.createGallery(body, token);
 
-      setSuccess(res.data.message || "Gallery item successfully added");
+      setSuccess(res.message || "Gallery item successfully added");
       setFormData({
         title: { ...initialText },
         description: { ...initialText },
@@ -105,7 +97,7 @@ const AddGallery: React.FC<AddGalleryProps> = ({ modal, onCancel }) => {
       {/* TITLE */}
       <div className="mb-3">
         <label className="font-medium">Title</label>
-        {["en","uz", "ru", "ja"].map((lang) => (
+        {["en", "uz", "ru", "ja"].map((lang) => (
           <input
             key={lang}
             placeholder={`Title (${lang})`}
@@ -119,7 +111,7 @@ const AddGallery: React.FC<AddGalleryProps> = ({ modal, onCancel }) => {
       {/* DESCRIPTION */}
       <div className="mb-3">
         <label className="font-medium">Description</label>
-        {["en","uz", "ru", "ja"].map((lang) => (
+        {["en", "uz", "ru", "ja"].map((lang) => (
           <textarea
             key={lang}
             placeholder={`Description (${lang})`}

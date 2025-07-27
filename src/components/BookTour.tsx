@@ -8,6 +8,7 @@ import Btn from "./Btn";
 import { CircleUserRound, Minus, Plus } from "lucide-react";
 import BackMessage from "./BackMessage";
 import CitizenshipSelect from "./Citizenship";
+import { TourService } from "@/services/tour.service";
 
 interface LocalizedText {
   en: string;
@@ -41,7 +42,8 @@ type PersonCategory = {
 };
 
 const BookTour = () => {
-  const { id: tourId } = useParams();
+  const { id } = useParams();
+  const tourId = Array.isArray(id) ? id[0] : id;
   const lang = useLocale();
   const t = useTranslations("booktour");
   const [tour, setTour] = useState<Tour | null>(null);
@@ -90,15 +92,10 @@ const BookTour = () => {
     if (!tourId) return;
     const onModel = "Tour";
     try {
-      const resTour = await axios.get(
-        `https://gotosamarkand.onrender.com/api/tour/one-tour/${tourId}`
-      );
-      const resRating = await axios.get(
-        `https://gotosamarkand.onrender.com/api/rating/get-rating-for-item`,
-        { params: { itemId: tourId, onModel } }
-      );
-      setRating(resRating.data?.ratings);
-      setTour(resTour.data);
+      const resTour = await TourService.getTour(tourId);
+      const resRating = await TourService.getRating(tourId, onModel);
+      setRating(resRating.ratings);
+      setTour(resTour);
     } catch (err) {
       console.error("Tour fetch error:", err);
     }
@@ -139,10 +136,7 @@ const BookTour = () => {
     setLoad(true);
     try {
       const data = { ...form, tourId, totalPrice };
-      const res = await axios.post(
-        "https://gotosamarkand.onrender.com/api/tour-order/create-order",
-        data
-      );
+      const res = await TourService.createTourOrder(data);
       localStorage.setItem(
         "userData",
         JSON.stringify({
@@ -153,7 +147,7 @@ const BookTour = () => {
         })
       );
 
-      setSuccess(res.data.message);
+      setSuccess(res.message);
       setTimeout(() => setSuccess(null), 4000);
     } catch (err) {
       let msg = "Update failed";

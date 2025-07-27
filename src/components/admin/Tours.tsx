@@ -8,6 +8,8 @@ import Btn from "../Btn";
 import Update from "./Update";
 import Delete from "./Delete";
 import AddTour from "./AddTour";
+import { TourService } from "@/services/tour.service";
+import PaginationData from "../PaginationData";
 
 interface LocalizedText {
   en: string;
@@ -49,30 +51,6 @@ const Tours = () => {
     add: false,
     id: "",
   });
-
-  useEffect(() => {
-    const fetchTours = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get("https://gotosamarkand.onrender.com/api/tour/all-tour");
-        setTours(res.data);
-      } catch (err) {
-        console.error("❌ Xatolik:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTours();
-  }, [modal]);
-
-  if (!loading && tours.length === 0) {
-    return (
-      <div className="text-center font-bold text-xl md:text-3xl xl:text-4xl p-10">
-        No tours found
-      </div>
-    );
-  }
 
   return (
     <div
@@ -122,6 +100,10 @@ const Tours = () => {
             {[1, 2, 3, 4].map((i, x) => (
               <p key={x} className="card_loader p-28"></p>
             ))}
+          </div>
+        ) : tours.length === 0 ? (
+          <div className="text-center w-full font-bold text-xl md:text-3xl xl:text-4xl p-10">
+            No tours found
           </div>
         ) : (
           tours.map((item, idx) => (
@@ -214,6 +196,12 @@ const Tours = () => {
         lang={lang}
         modal={modal.upd}
         data={tours.find((item) => item._id === modal.id)}
+      />
+      <PaginationData
+        setLoading={setLoading}
+        category="tour"
+        onDataChange={(data) => setTours(data)}
+        modal={modal.upd || modal.del || modal.add}
       />
     </div>
   );

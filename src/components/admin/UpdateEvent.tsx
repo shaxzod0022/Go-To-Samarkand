@@ -4,6 +4,7 @@ import Btn from "../Btn";
 import { styles } from "@/styles/styles";
 import axios from "axios";
 import BackMessage from "../BackMessage";
+import { EventService } from "@/services/event.service";
 
 interface LocalizedText {
   en: string;
@@ -102,17 +103,8 @@ const UpdateEvent: FC<UpdateProps> = ({ onCancel, modal, data, lang }) => {
     }
 
     try {
-      const res = await axios.put(
-        `https://gotosamarkand.onrender.com/api/event/update-event/${formData._id}`,
-        fd,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      setSuccess(res.data.message || "Event updated successfully");
+      const res = await EventService.updateEvent(fd, token, formData?._id);
+      setSuccess(res.message || "Event updated successfully");
       setTimeout(() => {
         setSuccess(null);
         if (onCancel) onCancel();

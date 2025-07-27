@@ -4,12 +4,13 @@ import Btn from "../Btn";
 import { styles } from "@/styles/styles";
 import axios from "axios";
 import BackMessage from "../BackMessage";
+import { TourService } from "@/services/tour.service";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
-uz:string;
+  uz: string;
 }
 
 interface Tour {
@@ -38,11 +39,8 @@ const Delete: FC<Delete> = ({ onCancel, modal, data, lang }) => {
     const stored = sessionStorage.getItem("adminData");
     const { token } = stored ? JSON.parse(stored) : {};
     try {
-      const res = await axios.delete(
-        `https://gotosamarkand.onrender.com/api/tour/delete-tour/${data?._id}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      setSuccess(res.data.message);
+      const res = await TourService.deleteTour(data?._id, token);
+      setSuccess(res.message);
       setTimeout(() => {
         setSuccess(null);
         if (onCancel) onCancel();

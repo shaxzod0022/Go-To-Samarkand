@@ -4,6 +4,8 @@ import axios from "axios";
 import Btn from "../Btn";
 import BackMessage from "../BackMessage";
 import { styles } from "@/styles/styles";
+import { useRouter } from "next/navigation";
+import { TourService } from "@/services/tour.service";
 
 interface AddTourProps {
   modal: boolean;
@@ -13,6 +15,7 @@ interface AddTourProps {
 const initialLocalizedText = { en: "", ru: "", ja: "" };
 
 const AddTour: React.FC<AddTourProps> = ({ modal, onCancel }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     title: { ...initialLocalizedText },
     description: { ...initialLocalizedText },
@@ -65,18 +68,9 @@ const AddTour: React.FC<AddTourProps> = ({ modal, onCancel }) => {
       body.append("title", JSON.stringify(formData.title));
       body.append("description", JSON.stringify(formData.description));
 
-      const res = await axios.post(
-        "https://gotosamarkand.onrender.com/api/tour/create-tour",
-        body,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const res = await TourService.createTour(body, token);
 
-      setSuccess(res.data.message || "Tour successfully added");
+      setSuccess(res.message || "Tour successfully added");
       setFormData({
         title: { ...initialLocalizedText },
         description: { ...initialLocalizedText },
@@ -114,7 +108,7 @@ const AddTour: React.FC<AddTourProps> = ({ modal, onCancel }) => {
       {/* TITLE */}
       <div className="mb-3">
         <label className="font-medium">Title</label>
-        {["en","uz", "ru", "ja"].map((lang) => (
+        {["en", "uz", "ru", "ja"].map((lang) => (
           <input
             key={lang}
             placeholder={`Title (${lang})`}
@@ -128,7 +122,7 @@ const AddTour: React.FC<AddTourProps> = ({ modal, onCancel }) => {
       {/* DESCRIPTION */}
       <div className="mb-3">
         <label className="font-medium">Description</label>
-        {["en","uz", "ru", "ja"].map((lang) => (
+        {["en", "uz", "ru", "ja"].map((lang) => (
           <textarea
             key={lang}
             placeholder={`Description (${lang})`}

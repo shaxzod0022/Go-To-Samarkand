@@ -8,6 +8,8 @@ import AddGallery from "./AddGallery";
 import UpdateGallery from "./UpdateGallery";
 import DeleteGallery from "./DeleteGallery";
 import { SquarePen, Trash2 } from "lucide-react";
+import { GalleryService } from "@/services/gallery.service";
+import PaginationData from "../PaginationData";
 
 interface LocalizedText {
   en: string;
@@ -46,53 +48,6 @@ const Gallery = () => {
     add: false,
     id: "",
   });
-
-  useEffect(() => {
-    const fetchGallery = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(
-          "https://gotosamarkand.onrender.com/api/gallery/all-gallery"
-        );
-        setGalleryItems(res.data);
-      } catch (err) {
-        console.error("❌ Xatolik:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchGallery();
-  }, [modal]);
-
-  if (!loading && galleryItems.length === 0) {
-    return (
-      <>
-        <div className="text-center font-bold text-xl md:text-3xl xl:text-4xl p-10">
-          <h2>No gallery items found</h2>
-        </div>
-        <Btn
-          onClick={() => setModal({ ...modal, add: true })}
-          title="Add Gallery Image"
-          newClass="mb-6 text-lg"
-        />
-        <AddGallery
-          modal={modal.add}
-          onCancel={() =>
-            setModal({ del: false, upd: false, add: false, id: "" })
-          }
-        />
-        <div
-          onClick={() =>
-            setModal({ del: false, upd: false, add: false, id: "" })
-          }
-          className={`fixed inset-0 bg-black/70 z-40 ${
-            modal.del || modal.upd || modal.add ? "block" : "hidden"
-          }`}
-        />
-      </>
-    );
-  }
 
   return (
     <div
@@ -143,6 +98,10 @@ const Gallery = () => {
             {[1, 2, 3, 4].map((i, x) => (
               <p key={x} className="card_loader p-28"></p>
             ))}
+          </div>
+        ) : galleryItems.length === 0 ? (
+          <div className="text-center w-full font-bold text-xl md:text-3xl xl:text-4xl p-10">
+            No galleries found
           </div>
         ) : (
           galleryItems.map((item, idx) => (
@@ -211,6 +170,12 @@ const Gallery = () => {
         }
         data={galleryItems.find((g) => g._id === modal.id)}
         lang={lang}
+      />
+      <PaginationData
+        setLoading={setLoading}
+        category="gallery"
+        onDataChange={(data) => setGalleryItems(data)}
+        modal={modal.upd || modal.del || modal.add}
       />
     </div>
   );

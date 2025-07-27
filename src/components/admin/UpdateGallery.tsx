@@ -5,12 +5,13 @@ import Btn from "../Btn";
 import { styles } from "@/styles/styles";
 import axios from "axios";
 import BackMessage from "../BackMessage";
+import { GalleryService } from "@/services/gallery.service";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
-uz:string;
+  uz: string;
 }
 
 interface Gallery {
@@ -91,17 +92,8 @@ const UpdateGallery: FC<UpdateGalleryProps> = ({
     }
 
     try {
-      const res = await axios.put(
-        `https://gotosamarkand.onrender.com/api/gallery/update-gallery/${formData._id}`,
-        fd,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      setSuccess(res.data.message || "Gallery updated successfully");
+      const res = await GalleryService.updateGallery(fd, token, formData?._id);
+      setSuccess(res.message || "Gallery updated successfully");
       setTimeout(() => {
         setSuccess(null);
         if (onCancel) onCancel();

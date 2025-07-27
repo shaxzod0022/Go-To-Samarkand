@@ -8,6 +8,7 @@ import Btn from "./Btn";
 import { CircleUserRound, Minus, Plus } from "lucide-react";
 import BackMessage from "./BackMessage";
 import CitizenshipSelect from "./Citizenship";
+import { EventService } from "@/services/event.service";
 
 interface LocalizedText {
   en: string;
@@ -43,7 +44,8 @@ type PersonCategory = {
 };
 
 const BookEvent = () => {
-  const { id: eventId } = useParams();
+  const { id } = useParams();
+  const eventId = Array.isArray(id) ? id[0] : id;
   const lang = useLocale();
   const t = useTranslations("booktour");
   const [event, setEvent] = useState<Event | null>(null);
@@ -91,15 +93,10 @@ const BookEvent = () => {
     if (!eventId) return;
     const onModel = "Event";
     try {
-      const res = await axios.get(
-        `https://gotosamarkand.onrender.com/api/event/one-event/${eventId}`
-      );
-      setEvent(res.data);
-      const resRating = await axios.get(
-        `https://gotosamarkand.onrender.com/api/rating/get-rating-for-item`,
-        { params: { itemId: eventId, onModel } }
-      );
-      setRating(resRating.data?.ratings);
+      const res = await EventService.getEvent(eventId);
+      setEvent(res);
+      const resRating = await EventService.getRating(eventId, onModel);
+      setRating(resRating.ratings);
     } catch (err) {
       console.error("Event fetch error:", err);
     }
@@ -139,10 +136,7 @@ const BookEvent = () => {
     setLoad(true);
     try {
       const data = { ...form, eventId, totalPrice };
-      const res = await axios.post(
-        "https://gotosamarkand.onrender.com/api/event-order/create-order",
-        data
-      );
+      const res = await EventService.createEventOrder(data);
       localStorage.setItem(
         "userData",
         JSON.stringify({
@@ -151,7 +145,7 @@ const BookEvent = () => {
           phone: form.phone,
         })
       );
-      setSuccess(res.data.message);
+      setSuccess(res.message);
       setTimeout(() => setSuccess(null), 4000);
     } catch (err) {
       let msg = "Update failed";

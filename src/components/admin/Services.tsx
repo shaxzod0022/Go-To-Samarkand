@@ -8,6 +8,7 @@ import Btn from "../Btn";
 import AddServic from "./AddServic";
 import UpdateServic from "./UpdateServic";
 import DeleteServic from "./DeleteServic";
+import PaginationData from "../PaginationData";
 
 interface LocalizedText {
   en: string;
@@ -49,50 +50,6 @@ const Services = () => {
     add: false,
     id: "",
   });
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(
-          "https://gotosamarkand.onrender.com/api/servic/all-servic"
-        );
-        setServices(res.data);
-      } catch (err) {
-        console.error("❌ Xatolik:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, [modal]);
-
-  if (!loading && services.length === 0) {
-    return (
-      <>
-        <div className="text-center font-bold text-xl md:text-3xl xl:text-4xl p-10 mt-32">
-          No services found
-        </div>
-        <Btn
-          onClick={() => setModal({ ...modal, add: !modal.add })}
-          title="Add Service"
-          newClass="mb-6"
-        />
-        <AddServic
-          onCancel={() =>
-            setModal({
-              del: false,
-              upd: false,
-              add: false,
-              id: "",
-            })
-          }
-          modal={modal.add}
-        />
-      </>
-    );
-  }
 
   return (
     <div className={`${styles.paddingCont} mt-12 py-10 scroll-mt-12`}>
@@ -144,6 +101,10 @@ const Services = () => {
             {[1, 2, 3, 4].map((i, x) => (
               <p key={x} className="card_loader p-28"></p>
             ))}
+          </div>
+        ) : services.length === 0 ? (
+          <div className="text-center w-full font-bold text-xl md:text-3xl xl:text-4xl p-10 mt-32">
+            No services found
           </div>
         ) : (
           services.map((item) => (
@@ -242,6 +203,12 @@ const Services = () => {
         lang={lang}
         modal={modal.upd}
         data={services.find((item) => item._id === modal.id)}
+      />
+      <PaginationData
+        setLoading={setLoading}
+        category="servic"
+        onDataChange={(data) => setServices(data)}
+        modal={modal.add || modal.del || modal.upd}
       />
     </div>
   );

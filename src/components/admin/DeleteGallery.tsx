@@ -5,12 +5,13 @@ import Btn from "../Btn";
 import { styles } from "@/styles/styles";
 import axios from "axios";
 import BackMessage from "../BackMessage";
+import { GalleryService } from "@/services/gallery.service";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
-uz:string;
+  uz: string;
 }
 
 interface Gallery {
@@ -38,14 +39,9 @@ const DeleteGallery: FC<DeleteProps> = ({ onCancel, modal, data, lang }) => {
     const { token } = stored ? JSON.parse(stored) : {};
 
     try {
-      const res = await axios.delete(
-        `https://gotosamarkand.onrender.com/api/gallery/delete-gallery/${data?._id}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const res = await GalleryService.deleteGallery(data?._id, token);
 
-      setSuccess(res.data.message || "Image successfully deleted");
+      setSuccess(res.message || "Image successfully deleted");
       setTimeout(() => {
         setSuccess(null);
         if (onCancel) onCancel();

@@ -4,12 +4,14 @@ import Btn from "../Btn";
 import { styles } from "@/styles/styles";
 import axios from "axios";
 import BackMessage from "../BackMessage";
+import { TourService } from "@/services/tour.service";
+import { useRouter } from "next/navigation";
 
 interface LocalizedText {
   en: string;
   ru: string;
   ja: string;
-uz:string;
+  uz: string;
 }
 
 interface Tour {
@@ -92,17 +94,8 @@ const Update: FC<UpdateProps> = ({ onCancel, modal, data, lang }) => {
     }
 
     try {
-      const res = await axios.put(
-        `https://gotosamarkand.onrender.com/api/tour/update-tour/${formData._id}`,
-        fd,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      setSuccess(res.data.message || "Tour updated successfully");
+      const res = await TourService.updateTour(fd, token, formData._id);
+      setSuccess(res.message || "Tour updated successfully");
       setTimeout(() => {
         setSuccess(null);
         if (onCancel) onCancel();

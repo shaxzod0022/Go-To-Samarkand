@@ -8,6 +8,7 @@ import Btn from "./Btn";
 import { CircleUserRound, Minus, Plus } from "lucide-react";
 import BackMessage from "./BackMessage";
 import CitizenshipSelect from "./Citizenship";
+import { ServiceService } from "@/services/services.service";
 
 interface LocalizedText {
   en: string;
@@ -41,7 +42,8 @@ type PersonCategory = {
 };
 
 const BookServic = () => {
-  const { id: servicId } = useParams();
+  const { id } = useParams();
+  const servicId = Array.isArray(id) ? id[0] : id;
   const lang = useLocale();
   const t = useTranslations("booktour");
   const [servic, setServic] = useState<Servic | null>(null);
@@ -91,15 +93,10 @@ const BookServic = () => {
     if (!servicId) return;
     const onModel = "Servic";
     try {
-      const res = await axios.get(
-        `https://gotosamarkand.onrender.com/api/servic/one-servic/${servicId}`
-      );
-      setServic(res.data);
-      const resRating = await axios.get(
-        `https://gotosamarkand.onrender.com/api/rating/get-rating-for-item`,
-        { params: { itemId: servicId, onModel } }
-      );
-      setRating(resRating.data?.ratings);
+      const res = await ServiceService.getService(servicId);
+      setServic(res);
+      const resRating = await ServiceService.getRating(servicId, onModel);
+      setRating(resRating.ratings);
     } catch (err) {
       console.error("Service fetch error:", err);
     }
@@ -141,10 +138,7 @@ const BookServic = () => {
     setLoad(true);
     try {
       const data = { ...form, servicId, totalPrice };
-      const res = await axios.post(
-        "https://gotosamarkand.onrender.com/api/servic-order/create-order",
-        data
-      );
+      const res = await ServiceService.createServiceOrder(data);
       localStorage.setItem(
         "userData",
         JSON.stringify({
@@ -153,7 +147,7 @@ const BookServic = () => {
           phone: form.phone,
         })
       );
-      setSuccess(res.data.message);
+      setSuccess(res.message);
       setTimeout(() => setSuccess(null), 4000);
     } catch (err) {
       let msg = "Update failed";

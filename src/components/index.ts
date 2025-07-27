@@ -14,3 +14,4 @@ export { default as Services } from "./Services";
 export { default as Events } from "./Events";
 export { default as StructuredData } from "./StructuredData";
 export { default as RateUs } from "./RateUs";
+export { default as PaginationData } from "./PaginationData";

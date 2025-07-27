@@ -4,6 +4,7 @@ import axios from "axios";
 import Btn from "../Btn";
 import BackMessage from "../BackMessage";
 import { styles } from "@/styles/styles";
+import { EventService } from "@/services/event.service";
 
 interface AddEventProps {
   modal: boolean;
@@ -69,18 +70,9 @@ const AddEvent: React.FC<AddEventProps> = ({ modal, onCancel }) => {
       body.append("startDate", formData.startDate);
       body.append("endDate", formData.endDate);
 
-      const res = await axios.post(
-        "https://gotosamarkand.onrender.com/api/event/create-event",
-        body,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const res = await EventService.createEvent(body, token);
 
-      setSuccess(res.data.message || "Event successfully added");
+      setSuccess(res.message || "Event successfully added");
       setFormData({
         title: { ...initialLocalizedText },
         description: { ...initialLocalizedText },
@@ -120,7 +112,7 @@ const AddEvent: React.FC<AddEventProps> = ({ modal, onCancel }) => {
       {/* TITLE */}
       <div className="mb-3">
         <label className="font-medium">Title</label>
-        {["en","uz", "ru", "ja"].map((lang) => (
+        {["en", "uz", "ru", "ja"].map((lang) => (
           <input
             key={lang}
             placeholder={`Title (${lang})`}
@@ -134,7 +126,7 @@ const AddEvent: React.FC<AddEventProps> = ({ modal, onCancel }) => {
       {/* DESCRIPTION */}
       <div className="mb-3">
         <label className="font-medium">Description</label>
-        {["en","uz", "ru", "ja"].map((lang) => (
+        {["en", "uz", "ru", "ja"].map((lang) => (
           <textarea
             key={lang}
             placeholder={`Description (${lang})`}

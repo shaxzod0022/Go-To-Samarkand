@@ -125,10 +125,19 @@ const BookEvent = () => {
     field: PersonCategory["category"],
     delta: number
   ) => {
-    setForm((prev) => ({
-      ...prev,
-      [field]: Math.max(0, prev[field] + delta),
-    }));
+    setForm((prev) => {
+      const current = prev[field];
+      if (field === "adults") {
+        return {
+          ...prev,
+          adults: Math.max(1, current + delta),
+        };
+      }
+      return {
+        ...prev,
+        [field]: Math.max(0, current + delta),
+      };
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -303,7 +312,10 @@ const BookEvent = () => {
                 <button
                   type="button"
                   onClick={() => handleCountChange(category, -1)}
-                  disabled={form[category] === 0}
+                  disabled={
+                    (category === "adults" && form[category] <= 1) ||
+                    (category !== "adults" && form[category] <= 0)
+                  }
                   className="px-3 hover:bg-red-200 active:bg-red-300 py-1 rounded"
                 >
                   <Minus />

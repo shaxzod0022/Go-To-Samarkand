@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: https://your-site.netlify.app/
 Disallow: /api/
 Allow: /
 

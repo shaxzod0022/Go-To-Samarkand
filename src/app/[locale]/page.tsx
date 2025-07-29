@@ -21,7 +21,7 @@ const HomePage = () => {
   return (
     <>
       <Head>
-        <link rel="canonical" href="https://gotosamarkand.com/" />
+        <link rel="canonical" href="https://gotosamarkand.com" />
         <meta
           name="description"
           content="You can use our services through this site"

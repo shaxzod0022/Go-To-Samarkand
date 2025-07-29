@@ -8,7 +8,7 @@ const TourPage = () => {
     <div className="mt-18">
       <Head>
         <title>Samarkand Tours | Go to Samarkand</title>
-        <link rel="canonical" href="https://gotosamarkand.com" />
+        <link rel="canonical" href="https://gotosamarkand.com/" />
         <meta
           name="description"
           content="Book the best tours in Samarkand. Discover historical places, culture, and local life with our guided tours."
@@ -39,7 +39,7 @@ const TourPage = () => {
           name="twitter:image"
           content="https://gotosamarkand.com/og-tours.jpg"
         />
-        <link rel="canonical" href="https://gotosamarkand.com" />
+        <link rel="canonical" href="https://gotosamarkand.com/" />
       </Head>
       <BookTour />
     </div>

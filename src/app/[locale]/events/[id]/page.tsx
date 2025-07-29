@@ -8,7 +8,7 @@ const EventPage = () => {
     <div className="mt-18">
       <Head>
         <title>Upcoming Events in Samarkand | Go to Samarkand</title>
-        <link rel="canonical" href="https://gotosamarkand.com" />
+        <link rel="canonical" href="https://gotosamarkand.com/" />
         <meta
           name="description"
           content="Check out upcoming festivals, cultural shows, and local events happening in Samarkand."

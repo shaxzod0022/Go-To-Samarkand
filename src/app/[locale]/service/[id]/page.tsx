@@ -8,7 +8,7 @@ const ServicePAge = () => {
     <div className="mt-18">
       <Head>
         <title>Our Services | Go to Samarkand</title>
-        <link rel="canonical" href="https://gotosamarkand.com" />
+        <link rel="canonical" href="https://gotosamarkand.com/" />
         <meta
           name="description"
           content="Discover professional travel services in Samarkand. Transportation, guides, and more for your perfect trip."

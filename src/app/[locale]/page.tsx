@@ -21,14 +21,14 @@ const HomePage = () => {
   return (
     <>
       <Head>
-        <link rel="canonical" href="https://gotosamarkand.com" />
+        <link rel="canonical" href="https://gotosamarkand.com/" />
         <meta
           name="description"
           content="You can use our services through this site"
         />
         <meta
           name="keywords"
-          content="go travel samarqand, gotosamarqand, go to samarqand hello samarkand, salom samarqand, samarqandga xush kelibsiz, sam, sam go to, go, to, samarkand, go to samarkand, gotosamarkand, traverty, travel, samarkand registan, registan, registon, samarqand, tours, galleries, samarkand photos, sam photos, services, events, samarkand events, go samarkand, travelsy samarkand, Book the best tours in Samarkand. Discover historical places, culture, and local life with our guided tours."
+          content="samarkandgoto, go travel samarqand, gotosamarqand, go to samarqand hello samarkand, salom samarqand, samarqandga xush kelibsiz, sam, sam go to, go, to, samarkand, go to samarkand, gotosamarkand, traverty, travel, samarkand registan, registan, registon, samarqand, tours, galleries, samarkand photos, sam photos, services, events, samarkand events, go samarkand, travelsy samarkand, Book the best tours in Samarkand. Discover historical places, culture, and local life with our guided tours."
         />
         <meta property="og:title" content="Samarkand | Go to Samarkand" />
         <meta

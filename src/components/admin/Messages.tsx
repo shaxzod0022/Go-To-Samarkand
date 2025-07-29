@@ -134,7 +134,7 @@ const Messages = () => {
                     modal.del && modal.id === msg._id ? "block" : "hidden"
                   } bg-white z-10 text-sm border border-red-500 rounded p-2 absolute right-0 -bottom-24`}
                 >
-                  <p className="mb-2">Delete the order?</p>
+                  <p className="mb-2">Delete the message?</p>
                   <div className={`${styles.flexAround} gap-2`}>
                     <Btn
                       onClick={() =>

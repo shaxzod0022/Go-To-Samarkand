@@ -149,7 +149,7 @@ const Events = () => {
                   })}
                 </p>
                 <p className="mb-2 font-semibold text-lg">
-                  <span>Start date:</span>{" "}
+                  <span>End date:</span>{" "}
                   {new Date(item.endDate).toLocaleTimeString("uz-UZ", {
                     timeZone: "Asia/Samarkand",
                     year: "numeric",

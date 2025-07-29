@@ -7,7 +7,7 @@ import { AdminInfo, Messages, NavbarAdmin } from "@/components/admin";
 export default function AdminDashboard() {
   const router = useRouter();
   const pathname = usePathname();
-  const [loading, setLoading] = useState(true); // <-- Yangi loading flag
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const jsonData = sessionStorage.getItem("adminData");

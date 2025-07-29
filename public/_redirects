@@ -1,1 +1,9 @@
-https://gotosamarkand.netlify.app/* https://gotosamarkand.com/:splat 301!
+/ru/about  /  301
+/uz/about  /  301
+/ja/about  /  301
+/en/about  /  301
+/ru/author/ganiev-ka15gmail-com  /  301
+/uz/author/ganiev-ka15gmail-com  /  301
+/en/author/ganiev-ka15gmail-com  /  301
+/ja/author/ganiev-ka15gmail-com  /  301
+https://gotosamarkand.netlify.app/*  https://gotosamarkand.com/:splat  301!

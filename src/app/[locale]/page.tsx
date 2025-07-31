@@ -21,6 +21,7 @@ const HomePage = () => {
   return (
     <>
       <Head>
+        <meta name="google-site-verification" content="P_CB8_OrJ7wIsha3EpZY3nQI0QKxxH0MNk_zRpoGnYI" />
         <link rel="canonical" href="https://gotosamarkand.com/" />
         <meta
           name="description"
